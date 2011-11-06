@@ -6,6 +6,7 @@ public class CrearJavaProgramador {
         System.out.println("Crear Buenos Aires. CrearJavaProgramador");
 
         Producto tabletpc = new Producto();
+
 //TODO: Objeto	( El codigo fuente es archivo de texto. Mercurial )
 //TODO: Atributo 	( tipos basicos )
 //TODO: Metodo	( que puede hacer esta clase, return )
@@ -20,6 +21,6 @@ public class CrearJavaProgramador {
 //TODO: Configuration ( Singleton, Cache )
 //TODO: Pool Objetos
         
-        System.out.println("Crear Buenos Aires. CrearJavaProgramador");
+        System.out.println("Crear Buenos Aires. CrearJavaProgramador Exito!!");
     }
 }
