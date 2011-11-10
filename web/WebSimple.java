@@ -24,23 +24,25 @@ public class WebSimple {
     public static void main(String[] args) {
         HttpServer httpd = null;
         try {
-            httpd = HttpServer.create(new InetSocketAddress(8888), 0);
+            int port = 8888;
+            httpd = HttpServer.create(new InetSocketAddress(port), 0);
 
 //TODO: http://download.oracle.com/javase/6/docs/api/index.html?java/util/concurrent/Executors.html       
             httpd.createContext("/app/one", new OneHandler());
+            httpd.createContext("/yaura/second", new SecondHandler());
             httpd.setExecutor(null); // creates a default executor            
             httpd.start();
-            
+            Logger.getLogger(WebSimple.class.getName()).log(Level.INFO, "Started into: "+port);
             while(true){
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
+                    Logger.getLogger(WebSimple.class.getName()).log(Level.INFO, "Running into: "+port);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(WebSimple.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
         } catch (IOException ex) {
-            ex.printStackTrace();
             Logger.getLogger(WebSimple.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             httpd.stop(1);

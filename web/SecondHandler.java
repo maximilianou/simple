@@ -8,13 +8,13 @@ import java.io.OutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class OneHandler implements HttpHandler {
+public class SecondHandler implements HttpHandler {
        public void handle(HttpExchange t) throws IOException {
            InputStream is = t.getRequestBody();
            
            read(is); // .. read the request body
            
-           String response = "This is the response  " + (new java.util.Date());
+           String response = "This is the Other response  " + (new java.util.Date());
            t.sendResponseHeaders(200, response.length());
            OutputStream os = t.getResponseBody();
            os.write(response.getBytes());
@@ -25,7 +25,7 @@ public class OneHandler implements HttpHandler {
            while(is.available()>0){
                info += (char)is.read();
            }
-           Logger.getLogger(OneHandler.class.getName()).log(Level.INFO, info);
+           Logger.getLogger(SecondHandler.class.getName()).log(Level.INFO, info);
        }    
     
 }
