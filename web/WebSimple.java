@@ -27,9 +27,11 @@ public class WebSimple {
             int port = 8888;
             httpd = HttpServer.create(new InetSocketAddress(port), 0);
 
-//TODO: http://download.oracle.com/javase/6/docs/api/index.html?java/util/concurrent/Executors.html       
+//TODO: http://download.oracle.com/javase/6/docs/api/index.html?java/util/concurrent/Executors.html
             httpd.createContext("/app/one", new OneHandler());
             httpd.createContext("/yaura/second", new SecondHandler());
+            httpd.createContext("/service/*", new SecondHandler());
+            httpd.createContext("/shutdown", new ShutdownHandler());
             httpd.setExecutor(null); // creates a default executor            
             httpd.start();
             Logger.getLogger(WebSimple.class.getName()).log(Level.INFO, "Started into: "+port);
