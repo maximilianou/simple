@@ -28,9 +28,9 @@ public class WebSimple {
             httpd = HttpServer.create(new InetSocketAddress(port), 0);
 
 //TODO: http://download.oracle.com/javase/6/docs/api/index.html?java/util/concurrent/Executors.html
-            httpd.createContext("/app/one", new OneHandler());
-            httpd.createContext("/yaura/second", new SecondHandler());
-            httpd.createContext("/service/*", new SecondHandler());
+            httpd.createContext("/app", new OneHandler());
+            httpd.createContext("/yaura", new SecondHandler());
+            httpd.createContext("/service", new SecondHandler());
             httpd.createContext("/shutdown", new ShutdownHandler());
             httpd.setExecutor(null); // creates a default executor            
             httpd.start();
