@@ -14,6 +14,7 @@ public class TestCrearProgramadorJava {
         Product tabletpcB = new Product();
 
 //TODO: Atribute ( basic types )
+        
 
         tabletpcA.name = "Samsung Galaxy Tab 10";
         tabletpcA.description = "1GHz dual-core NVIDIA Tegra 2 processor, 10.1inch widescreen 1280x800 149ppi";
@@ -27,7 +28,6 @@ public class TestCrearProgramadorJava {
 
         tabletpcA.print();
         tabletpcB.print();
-        
 // package, import, public
         
 
