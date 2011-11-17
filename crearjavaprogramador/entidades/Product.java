@@ -30,9 +30,7 @@ public class Product {
     }
 
     public void setAmount(double amount) throws BelowZeroException {
-        if( amount < 0 ){
-            throw new  BelowZeroException("Verifique que el valor sea Mayor a Cero.");
-        }
+        Validator.positive(amount);
         this.amount = amount;
     }
 }
