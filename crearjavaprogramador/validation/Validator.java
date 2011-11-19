@@ -1,5 +1,6 @@
-package simple.crearjavaprogramador.entidades;
+package simple.crearjavaprogramador.validation;
 //maximilianou@gmail.com
+
 
 public class Validator {
     public static void positive(double pos) throws BelowZeroException{

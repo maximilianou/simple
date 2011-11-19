@@ -1,6 +1,10 @@
 package simple.crearjavaprogramador.entidades;
 //maximilianou@gmail.com
 
+import simple.crearjavaprogramador.validation.BelowZeroException;
+import simple.crearjavaprogramador.validation.Validator;
+
+
 public class Product {
     private String name;
     private String description;

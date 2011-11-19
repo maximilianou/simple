@@ -1,6 +1,6 @@
 package simple.crearjavaprogramador.test;
 //maximilianou@gmail.com
-import simple.crearjavaprogramador.entidades.BelowZeroException;
+import simple.crearjavaprogramador.validation.BelowZeroException;
 import simple.crearjavaprogramador.entidades.Product;
 
 public class TestCrearProgramadorJava {
@@ -44,7 +44,7 @@ public class TestCrearProgramadorJava {
         }
         
 // Java Core Objets Validaciones
-//TODO: Excepciones ( The system never halt whithout saying why. )
+//TODO: Excepciones ( The system never halt whithout knowing why. )
 
         tabletpcB.setName("IPad2");
         tabletpcB.setDescription("1GHz Apple A5 SoC, 9.7inch 1024×768 132ppi");
@@ -62,8 +62,10 @@ public class TestCrearProgramadorJava {
 // Java Core Objetos II
 //TODO: Herencia ( reutilizando codigo, familia )
 
+        
 //TODO: Abstracto ( luchando contra la inconsistencia )
 
+        
 //TODO: Interface, web, html ( toString(), toHtml(), toJson()  )
         
 // Java Api I Memoria
