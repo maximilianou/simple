@@ -26,6 +26,6 @@ public class OneHandler implements HttpHandler {
                info += (char)is.read();
            }
            Logger.getLogger(OneHandler.class.getName()).log(Level.INFO, info);
-       }    
+       }
     
 }

@@ -1,4 +1,4 @@
-package simple.crearjavaprogramador.entidades;
+package simple.crearjavaprogramador.validation;
 //maximilianou@gmail.com
 
 public class BelowZeroException extends Exception {
