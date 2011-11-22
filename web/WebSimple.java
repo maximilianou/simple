@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
  * 
  * TODO: Look here if you want more http://java-source.net/open-source/web-servers
@@ -20,7 +19,6 @@ import java.util.logging.Logger;
  * 7. http://download.oracle.com/javase/6/docs/api/index.html?java/util/concurrent/Executor.html
  */
 public class WebSimple {
-
     public static void main(String[] args) {
         HttpServer httpd = null;
         try {
@@ -38,18 +36,15 @@ public class WebSimple {
             while(true){
                 try {
                     Thread.sleep(3000);
-                    Logger.getLogger(WebSimple.class.getName()).log(Level.INFO, "Running into: "+port);
+                    Logger.getLogger(WebSimple.class.getName()).log(Level.INFO, "Running into: "+port+" : "+ (new java.util.Date()));
                 } catch (InterruptedException ex) {
                     Logger.getLogger(WebSimple.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
         } catch (IOException ex) {
             Logger.getLogger(WebSimple.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             httpd.stop(1);
         }
-
-
     }
 }
