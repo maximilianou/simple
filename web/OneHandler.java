@@ -17,6 +17,7 @@ public class OneHandler implements HttpHandler {
            String response = "This is the response  " + (new java.util.Date());
            t.sendResponseHeaders(200, response.length());
            OutputStream os = t.getResponseBody();
+           //TODO: Content-Type: text/html, css, javascript, png, jpg, pdf .. MIME Types
            os.write(response.getBytes());
            os.close();
        }

@@ -1,7 +1,6 @@
 package simple.crearjavaprogramador.test;
 //maximilianou@gmail.com
 import simple.crearjavaprogramador.validation.BelowZeroException;
-import simple.crearjavaprogramador.entities.Product;
 import simple.crearjavaprogramador.entities.ProductArticle;
 
 public class TestCrearProgramadorJava {
@@ -101,7 +100,14 @@ public class TestCrearProgramadorJava {
         
         System.out.println(tabletpcA.toJSON());
         System.out.println(tabletpcB.toJSON());
-        
+
+        //TODO: HTML5 form
+        //TODO: HTML5 list
+        //  http://diveintohtml5.info/        
+        //  http://www.modernizr.com/  (Javascript lib, detect html5 featrues)
+        //   http://camendesign.com/code/video_for_everybody
+        //   http://videojs.com/ ( All )
+        //    http://www.webmproject.org/
         
 // Java Api I Memoria
 //TODO: Collections
