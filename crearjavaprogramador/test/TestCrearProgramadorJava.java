@@ -1,7 +1,13 @@
 package simple.crearjavaprogramador.test;
 //maximilianou@gmail.com
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import simple.crearjavaprogramador.entities.Product;
 import simple.crearjavaprogramador.validation.BelowZeroException;
 import simple.crearjavaprogramador.entities.ProductArticle;
+import simple.crearjavaprogramador.order.ProductBestPrice;
 
 public class TestCrearProgramadorJava {
 
@@ -79,7 +85,7 @@ public class TestCrearProgramadorJava {
         tabletpcB.setDescription("1GHz Apple A5 SoC, 9.7inch 1024×768 132ppi");
         
         try{
-            tabletpcB.setAmount(500);
+            tabletpcB.setAmount(501);
         }catch(BelowZeroException mce){
             mce.printStackTrace();
         }
@@ -100,6 +106,47 @@ public class TestCrearProgramadorJava {
         
         System.out.println(tabletpcA.toJSON());
         System.out.println(tabletpcB.toJSON());
+        
+
+// Java Api I Memoria
+//TODO: Collections
+
+        ArrayList<Product> listita = new ArrayList<Product>();
+        
+        listita.add(tabletpcB);
+        listita.add(tabletpcA);
+        
+        System.out.println("--------------------");
+        System.out.println(listita);
+        System.out.println("--------------------");
+
+        for(int i = 0; i < listita.size(); i++){
+            System.out.println( listita.get(i) );
+        }
+        
+        System.out.println("--------------------");
+        for(Product p : listita){
+            System.out.println(p);
+        }
+        
+        System.out.println("--------------------");
+        
+        Iterator<Product> iter = listita.iterator();
+        while( iter.hasNext() ){
+            Product p = iter.next();
+            System.out.println(p);
+        }
+        
+        System.out.println("--------------------");
+        
+        Collections.sort(listita, new ProductBestPrice());
+
+        System.out.println(listita);
+        System.out.println("--------------------");
+        //TODO:  unmodifiable, immutable,  http://docs.oracle.com/javase/6/docs/technotes/guides/collections/overview.html
+// Java Api II Comunicacion
+//TODO: Streams	( File, FileReader, BufferedReader, Traductor, URL, HTTPConnection, Properties )
+        
 
         //TODO: HTML5 form
         //TODO: HTML5 list
@@ -109,11 +156,6 @@ public class TestCrearProgramadorJava {
         //   http://videojs.com/ ( All )
         //    http://www.webmproject.org/
         
-// Java Api I Memoria
-//TODO: Collections
-
-// Java Api II Comunicacion
-//TODO: Streams	( File, FileReader, BufferedReader, Traductor, URL, HTTPConnection, Properties )
 
 // Java Api III SQL
 //TODO: JDBC ( hsqldb )
