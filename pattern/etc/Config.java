@@ -10,4 +10,13 @@ public class Config {
         }
         return instance;
     }
+    
+    
+    
+    public static void main(String[]args){
+        System.out.println( Config.getInstance() );
+        System.out.println( Config.getInstance() );
+        System.out.println( Config.getInstance() );
+        System.out.println( Config.getInstance() );
+    }
 }
