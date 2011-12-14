@@ -37,7 +37,7 @@
 	<property file="${common.dir}/build.properties"/>
 	
 	<property name="ivy.install.version" value="2.2.0" />
-	<property name="ivy.jar.dir" value="${basedir}/ivy" />
+	<property name="ivy.jar.dir" value="${common.dir}/ivy" />
 	<property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
 
     <target name="download-ivy" unless="skip.download">
@@ -114,7 +114,7 @@
         <java classpathref="run.path.id" classname="${main.class.name}"/>
     </target>
 
-	<target name="ivy-new-version" depends="load-ivy" unless="ivy.new.revision">
+  <target name="ivy-new-version" depends="load-ivy" unless="ivy.new.revision">
     	<!-- default module version prefix value -->
 		<property name="module.version.prefix" value="${module.version.target}-dev-b" />
 		
@@ -132,7 +132,7 @@
         <property name="ivy.new.revision" value="${module.version.target}-local-${now}"/>
     </target>
 	
-	<target name="version" depends="ivy-new-version">
+ <target name="version" depends="ivy-new-version">
     	<!-- create version file in classpath for later inclusion in jar -->
         <mkdir dir="${classes.dir}"/>
 		<echo message="version=${ivy.new.revision}" file="${classes.dir}/${ant.project.name}.properties" append="false" />
