@@ -19,7 +19,7 @@
 <ivy-module version="1.0">
     <info 
         organisation="org.apache.ivy.example"
-        module="list"
+        module="simple"
         status="integration"/>
     <configurations>
       <conf name="core"/>
