@@ -16,8 +16,18 @@
    specific language governing permissions and limitations
    under the License.    
 -->
-<project name="simple" default="compile">
-	<property file="build.properties"/>
-	
-	<import file="${common.dir}/common.xml"/>
-</project>
+<ivy-module version="1.0">
+    <info 
+        organisation="org.apache.ivy.example"
+        module="simplejpa"
+        status="integration"/>
+    <configurations>
+      <conf name="core"/>
+      <conf name="standalone" extends="core"/>
+    </configurations>
+    <publications>
+      <artifact name="simplejpa" type="jar" conf="core" />
+    </publications>
+    <dependencies>
+    </dependencies>
+</ivy-module>

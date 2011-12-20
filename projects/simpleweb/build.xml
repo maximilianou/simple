@@ -16,7 +16,7 @@
    specific language governing permissions and limitations
    under the License.    
 -->
-<project name="simple" default="compile">
+<project name="simpleweb" default="compile">
 	<property file="build.properties"/>
 	
 	<import file="${common.dir}/common.xml"/>
