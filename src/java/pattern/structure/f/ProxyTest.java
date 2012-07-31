@@ -41,13 +41,18 @@ class PagesProxy {
         System.out.println("GET: [" + url + "]");
         Page p = new Page(url);
         p.setLastUpdate(urlCon.getLastModified());
-        InputStreamReader isr = new InputStreamReader(urlCon.getInputStream());
-        BufferedReader r = new BufferedReader(isr);
-        if(r.ready()) {//while (r.ready()) {
-            p.setContenido(p.getContenido() + r.readLine());
+        InputStreamReader isr = null;
+        BufferedReader r = null; 
+        try{
+            isr = new InputStreamReader(urlCon.getInputStream());
+            r = new BufferedReader(isr);
+            if(r.ready()) {//while (r.ready()) {
+                p.setContenido(p.getContenido() + r.readLine());
+            }
+        }finally{
+            r.close();
+            isr.close();
         }
-        r.close();
-        isr.close();
         return p;
     }
 }
