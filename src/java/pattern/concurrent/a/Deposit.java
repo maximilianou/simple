@@ -1,5 +1,5 @@
 package pattern.concurrent.a;
-public class Drop {
+public class Deposit {
     private String message;
     private boolean empty = true;
     public synchronized String take() {
