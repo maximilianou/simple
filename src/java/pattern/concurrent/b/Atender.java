@@ -19,9 +19,18 @@ public class Atender implements Runnable{
             br = new BufferedReader(isr);
             osw = new OutputStreamWriter( atencion.getOutputStream() );
             bw = new BufferedWriter(osw);
-            String msg = br.readLine();
-            bw.write(msg);
-            bw.flush();
+            String msg = "";
+            if(br.ready()){
+              System.out.println("Atender receive:"+msg+"[DOING..]");
+              msg = br.readLine();
+              System.out.println("Atender receive:"+msg+"[DONE]");
+            
+              System.out.println("Atender send:"+msg+"[DOING..]");
+              bw.write(msg);
+              bw.newLine();
+              bw.flush();
+              System.out.println("Atender send:"+msg+"[DONE]");
+            }
         } catch (IOException ex) {
             Logger.getLogger(Atender.class.getName()).log(Level.SEVERE, null, ex);
         }finally{
