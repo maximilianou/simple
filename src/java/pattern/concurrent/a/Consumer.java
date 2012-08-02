@@ -1,8 +1,8 @@
 package pattern.concurrent.a;
 import java.util.Random;
 public class Consumer implements Runnable {
-    private Drop drop;
-    public Consumer(Drop drop) {
+    private Deposit drop;
+    public Consumer(Deposit drop) {
         this.drop = drop;
     }
     public void run() {
