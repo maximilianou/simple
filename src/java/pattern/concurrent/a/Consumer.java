@@ -1,18 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package pattern.concurrent.a;
-
 import java.util.Random;
-
 public class Consumer implements Runnable {
     private Drop drop;
-
     public Consumer(Drop drop) {
         this.drop = drop;
     }
-
     public void run() {
         Random random = new Random();
         for (String message = drop.take();
