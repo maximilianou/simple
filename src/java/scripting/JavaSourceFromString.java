@@ -26,9 +26,12 @@ public class JavaSourceFromString extends SimpleJavaFileObject {
         System.out.println("-----------------------------");
         System.out.println("Comienzo de Compilacion");
         System.out.println("-----------------------------");
-        
+
         String nameJava = "scripting.Muestra";
-        String srcJava = "package scripting;public class Muestra{public String mostrar(String s){System.out.println(s+s+s);return s+s;}}";
+        String srcJava = "package scripting;public class Muestra{"
+                +"public Muestra(){System.out.println(123);}"
+                +"public String mostrar(String s){System.out.println(s+s+s);return s+s;}"
+                +"}";
         JavaSourceFromString codigo = new JavaSourceFromString(nameJava, srcJava);
         System.out.println(codigo.getName());
         System.out.println(codigo.toUri());
@@ -48,27 +51,40 @@ public class JavaSourceFromString extends SimpleJavaFileObject {
         System.out.println("----------------------------- Compilar una Clase");
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
-        
+
         Iterable<? extends JavaFileObject> compilationUnits1 = Arrays.asList(codigo);
         compiler.getTask(null, fileManager, null, null, null, compilationUnits1).call();
         try {
-           fileManager.close();
+            fileManager.close();
         } catch (IOException ex) {
             Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("----------------------------- Compilar una Clase OK");
+
         System.out.println("----------------------------- Compilar Misma Clase");
         compiler = ToolProvider.getSystemJavaCompiler();
         fileManager = compiler.getStandardFileManager(null, null, null);
-        
+
         Iterable<? extends JavaFileObject> compilationUnits2 = Arrays.asList(codigo2);
         compiler.getTask(null, fileManager, null, null, null, compilationUnits2).call();
         try {
-           fileManager.close();
+            fileManager.close();
         } catch (IOException ex) {
             Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println("----------------------------- Compilar Misma Clase OK");
+
+        
+//Error:java.lang.ClassNotFoundException: scripting.Muestra
+//        try {
+//            Class.forName(nameJava).newInstance();
+//        } catch (InstantiationException ex) {
+//            Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (ClassNotFoundException ex) {
+//            Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
 //Error::string:///scripting/Muestra.java:1: duplicate class: scripting.Muestra
 //        System.out.println("----------------------------- Compilar Dos veces la Misma Clase");
@@ -83,7 +99,7 @@ public class JavaSourceFromString extends SimpleJavaFileObject {
 //            Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //        System.out.println("-----------------------------");
-        
+
         System.out.println("-----------------------------");
         System.out.println("Final de Compilacion");
         System.out.println("-----------------------------");
