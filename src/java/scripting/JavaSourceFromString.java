@@ -45,19 +45,45 @@ public class JavaSourceFromString extends SimpleJavaFileObject {
         System.out.println(codigo2.getCharContent(true));
         System.out.println(codigo2.getKind());
 
-        System.out.println("-----------------------------");
+        System.out.println("----------------------------- Compilar una Clase");
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
         StandardJavaFileManager fileManager = compiler.getStandardFileManager(null, null, null);
-        Iterable<? extends JavaFileObject> compilationUnits1 =
-                Arrays.asList(codigo);
+        
+        Iterable<? extends JavaFileObject> compilationUnits1 = Arrays.asList(codigo);
         compiler.getTask(null, fileManager, null, null, null, compilationUnits1).call();
         try {
            fileManager.close();
         } catch (IOException ex) {
             Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("-----------------------------");
+        System.out.println("----------------------------- Compilar una Clase OK");
+        System.out.println("----------------------------- Compilar Misma Clase");
+        compiler = ToolProvider.getSystemJavaCompiler();
+        fileManager = compiler.getStandardFileManager(null, null, null);
+        
+        Iterable<? extends JavaFileObject> compilationUnits2 = Arrays.asList(codigo2);
+        compiler.getTask(null, fileManager, null, null, null, compilationUnits2).call();
+        try {
+           fileManager.close();
+        } catch (IOException ex) {
+            Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("----------------------------- Compilar Misma Clase OK");
 
+//Error::string:///scripting/Muestra.java:1: duplicate class: scripting.Muestra
+//        System.out.println("----------------------------- Compilar Dos veces la Misma Clase");
+//        JavaCompiler compiler2 = ToolProvider.getSystemJavaCompiler();
+//        StandardJavaFileManager fileManager2 = compiler.getStandardFileManager(null, null, null);
+//        
+//        List<? extends JavaFileObject> compilationUnits2 = Arrays.asList(codigo,codigo2);
+//        compiler2.getTask(null, fileManager2, null, null, null, compilationUnits2).call();
+//        try {
+//           fileManager2.close();
+//        } catch (IOException ex) {
+//            Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println("-----------------------------");
+        
         System.out.println("-----------------------------");
         System.out.println("Final de Compilacion");
         System.out.println("-----------------------------");
