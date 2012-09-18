@@ -9,7 +9,6 @@ import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.Locale;
-
 import javax.tools.Diagnostic;
 import javax.tools.DiagnosticListener;
 import javax.tools.JavaCompiler;
@@ -18,8 +17,9 @@ import javax.tools.SimpleJavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
-public class DynamicCompiler {
+public class WebDynCompiler {
 
+    
     private static String classOutputFolder = ".";
 
     public static class MyDiagnosticListener implements DiagnosticListener<JavaFileObject> {
@@ -41,7 +41,7 @@ public class DynamicCompiler {
 
         public InMemoryJavaFileObject(String className, String contents) throws Exception {
             super(URI.create("string:///" + className.replace('.', '/')
-                    + Kind.SOURCE.extension), Kind.SOURCE);
+                    + JavaFileObject.Kind.SOURCE.extension), JavaFileObject.Kind.SOURCE);
             this.contents = contents;
         }
         public CharSequence getCharContent(boolean ignoreEncodingErrors)
@@ -50,7 +50,7 @@ public class DynamicCompiler {
         }
     }
 
-    private static JavaFileObject getJavaFileObject() {
+    private static JavaFileObject getJavaFileObject(String codigo) {
         StringBuilder contents = new StringBuilder(
                 "package scripting;"
                 + "public class Calculator { "
@@ -64,7 +64,7 @@ public class DynamicCompiler {
                 + "  } " + "} ");
         JavaFileObject so = null;
         try {
-            so = new InMemoryJavaFileObject("math.Calculator", contents.toString());
+            so = new WebDynCompiler.InMemoryJavaFileObject("scripting.Calculator", contents.toString());
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -79,7 +79,7 @@ public class DynamicCompiler {
         JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
 
         // for compilation diagnostic message processing on compilation WARNING/ERROR
-        MyDiagnosticListener c = new MyDiagnosticListener();
+        WebDynCompiler.MyDiagnosticListener c = new WebDynCompiler.MyDiagnosticListener();
         StandardJavaFileManager fileManager = compiler.getStandardFileManager(c,
                 Locale.ENGLISH,
                 null);
@@ -97,7 +97,7 @@ public class DynamicCompiler {
     /**
      * run class from the compiled byte code file by URLClassloader
      */
-    public static void runIt() {
+    public static void runIt(String clase, String metodo) {
         // Create a File object on the root of the directory
         // containing the class file
         File file = new File(classOutputFolder);
@@ -113,18 +113,16 @@ public class DynamicCompiler {
 
             // Load in the class; Class.childclass should be located in
             // the directory file:/class/demo/
-            Class thisClass = loader.loadClass("scripting.Calculator");
+            Class thisClass = loader.loadClass(clase);
 
             Class params[] = {};
             Object paramsObj[] = {};
             Object instance = thisClass.newInstance();
-            Method thisMethod = thisClass.getDeclaredMethod("testAdd", params);
+            Method thisMethod = thisClass.getDeclaredMethod(metodo, params);
             
-            thisClass = loader.loadClass("scripting.Calculator");
-            
-
             // run the testAdd() method on the instance:
             thisMethod.invoke(instance, paramsObj);
+            
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -136,18 +134,29 @@ public class DynamicCompiler {
 
     public static void main(String[] args) throws Exception {
         //1.Construct an in-memory java source file from your dynamic code
-        JavaFileObject file = getJavaFileObject();
+        String codigo = 
+                "package scripting;"
+                + "public class Calculator { "
+                + "  public void testAdd() { "
+                + "    System.out.println(200+300); "
+                + "  } "
+                + "  public static void main(String[] args) { "
+                + "    Calculator cal = new Calculator(); "
+                + "    cal.testAdd(); "
+                + "    System.out.println(777); "
+                + "  } " 
+                + "} ";
+        JavaFileObject file = getJavaFileObject(codigo);
         Iterable<? extends JavaFileObject> files = Arrays.asList(file);
 
         //2.Compile your files by JavaCompiler
         compile(files);
 
         //3.Load your class by URLClassLoader, then instantiate the instance, and call method by reflection
-        runIt();
+        String clase = "scripting.Calculator";
+        String metodo = "testAdd";
+        runIt(clase, metodo);
         //2.Compile your files by JavaCompiler
-        compile(files);
-
-        //3.Load your class by URLClassLoader, then instantiate the instance, and call method by reflection
-        runIt();
     }
+    
 }
