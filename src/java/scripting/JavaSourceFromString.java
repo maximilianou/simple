@@ -101,6 +101,9 @@ public class JavaSourceFromString extends SimpleJavaFileObject {
 //        System.out.println("-----------------------------");
         // Esto es un comentario nuevo
         // pero puede ser codigo
+        // pero puede ser codigo
+        // pero puede ser codigo
+        // pero puede ser codigo
 
         System.out.println("-----------------------------");
         System.out.println("Final de Compilacion");
