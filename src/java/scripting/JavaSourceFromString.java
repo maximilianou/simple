@@ -99,6 +99,8 @@ public class JavaSourceFromString extends SimpleJavaFileObject {
 //            Logger.getLogger(JavaSourceFromString.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //        System.out.println("-----------------------------");
+        // Esto es un comentario nuevo
+        // pero puede ser codigo
 
         System.out.println("-----------------------------");
         System.out.println("Final de Compilacion");
