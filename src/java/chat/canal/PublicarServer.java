@@ -1,10 +1,10 @@
-package app.hilos.chat;
+package chat.canal;
 
 import java.net.Socket;
 import java.util.HashMap;
 
-import app.hilos.TareaEchoServer;
-import app.server.EchoServer;
+import chat.tareas.TareaEchoServer;
+import chat.echo.EchoServer;
 
 public class PublicarServer extends EchoServer {
 	

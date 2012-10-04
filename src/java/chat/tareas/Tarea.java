@@ -1,4 +1,4 @@
-package app.hilos;
+package chat.tareas;
 
 import java.util.*;
 
@@ -12,7 +12,7 @@ public class Tarea implements Runnable {
 		elLog.add(getId() + ":" + new Date(System.currentTimeMillis())
 				+ ":Inicio");
 
-		app.Application.getInstance().getMensajesLog().put(this.getId(),
+		chat.Application.getInstance().getMensajesLog().put(this.getId(),
 				this.getElLog());
 
 	}

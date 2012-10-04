@@ -1,4 +1,4 @@
-package app.hilos.chat;
+package chat.canal;
 
 import java.util.ArrayList;
 

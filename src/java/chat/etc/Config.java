@@ -1,4 +1,4 @@
-package app;
+package chat.etc;
 
 import java.util.*;
 import java.io.IOException;
