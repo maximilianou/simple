@@ -1,8 +1,8 @@
-package app.server;
+package chat.echo;
 
 import java.net.*;
 
-import app.hilos.TareaEchoServer;
+import chat.tareas.TareaEchoServer;
 
 public class EchoServer implements Runnable {
 	public boolean SHUTDOWN = false;

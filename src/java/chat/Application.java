@@ -1,8 +1,9 @@
-package app;
+package chat;
+import chat.etc.Config;
 import java.io.IOException;
 import java.util.*;
 
-import app.hilos.chat.PublicadorSuscriptorService;
+import chat.canal.PublicadorSuscriptorService;
 public class Application {
 	
 ///////////////////////////////////////////////////	Singleton
@@ -33,9 +34,9 @@ public class Application {
     }
 ///////////////////////////////////////////////////	
 	public void loadEcho(int port) {
-		app.server.EchoServer es;
+		chat.echo.EchoServer es;
 		try {
-			es = new app.server.EchoServer(port);
+			es = new chat.echo.EchoServer(port);
 			Thread miServidor = new Thread(es);
 			miServidor.start();
 		} catch (Exception e) {

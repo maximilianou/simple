@@ -1,4 +1,4 @@
-package app.hilos.chat;
+package chat.canal;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,8 +7,8 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.HashMap;
 
-import app.Application;
-import app.hilos.Tarea;
+import chat.Application;
+import chat.tareas.Tarea;
 
 public class TareaPublicarServer extends Tarea {
 	Socket sock;

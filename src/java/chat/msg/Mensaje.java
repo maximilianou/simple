@@ -1,4 +1,4 @@
-package app.hilos.chat;
+package chat.msg;
 
 public class Mensaje {
   
