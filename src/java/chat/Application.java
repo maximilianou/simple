@@ -1,9 +1,11 @@
 package chat;
-import chat.etc.Config;
 import java.io.IOException;
 import java.util.*;
+import chat.etc.*;
+import chat.echo.*;
 
 import chat.canal.PublicadorSuscriptorService;
+import chat.pool.PoolDeConexiones;
 public class Application {
 	
 ///////////////////////////////////////////////////	Singleton
@@ -25,18 +27,18 @@ public class Application {
 	}
 ///////////////////////////////////////////////////	
     private Config conf = new Config();
-    public void loadConfig(){
+    public void loadConfig(String urlConfig){
     	try {
-			conf.load();
+			conf.load(urlConfig);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
     }
 ///////////////////////////////////////////////////	
 	public void loadEcho(int port) {
-		chat.echo.EchoServer es;
+		EchoServer es;
 		try {
-			es = new chat.echo.EchoServer(port);
+			es = new EchoServer(port);
 			Thread miServidor = new Thread(es);
 			miServidor.start();
 		} catch (Exception e) {
@@ -53,9 +55,27 @@ public class Application {
     					conf.get("service.suscriptor.port") )
     							);
     }
+    public PublicadorSuscriptorService getPubSubService(){
+    	return pubSubService;
+    }
 ///////////////////////////////////////////////////	
-  public void load(){
-	loadConfig();
+    private PoolDeConexiones poolDeConexiones = new PoolDeConexiones();
+    private void loadPoolDeConexiones(int cantCon) {
+    	try {
+			poolDeConexiones.inicializarPool(cantCon);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+    }
+    public PoolDeConexiones getPool(){
+    	return poolDeConexiones;
+    }
+///////////////////////////////////////////////////	
+    
+  public void load(String urlConfig){
+	loadConfig(urlConfig);
+	//loadPoolDeConexiones(5);
 	loadEcho( 
 		Integer.parseInt( 
 			conf.get("service.echo.port") ) );

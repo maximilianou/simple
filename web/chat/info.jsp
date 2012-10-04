@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%@page import="app.Application"%>
+<%@page import="chat.Application"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -40,13 +40,13 @@
   <br/>
   <% 
 java.util.Iterator<String> claves 
-   = Application.getInstance().getMensajesLog().keySet().iterator();
+   = chat.Application.getInstance().getMensajesLog().keySet().iterator();
   while(claves.hasNext()){
 	  String claveactual = claves.next();
 	  out.println( ""
 			   + claveactual
 			   +" : "
-			   +Application.getInstance()
+			   +chat.Application.getInstance()
 			         .getMensajesLog().get(claveactual) 
 			   +"<br/>");
   }

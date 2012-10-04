@@ -7,12 +7,10 @@ import java.net.*;
 public class Config {
   Properties p = null;
   
-  public void load() throws IOException{
+  public void load(String urlConfig) throws IOException{ /// //
 		System.out.println("Config ...");
 		URL configuraciones 
-		    = new URL("http://localhost:8080/hilos2/prop.jsp");
-		//Config c = new Config();
-		//c.load(
+		    = new URL(urlConfig); /// //
 		InputStream entrada = configuraciones
 				   .openConnection().getInputStream(); 
 	    this.p = new Properties();
