@@ -14,7 +14,8 @@ java.net.Socket s = new java.net.Socket("localhost",9030);
 	try{
 		salida = new OutputStreamWriter( s .getOutputStream());
 		bsalida = new BufferedWriter( salida );
-		bsalida.write( msg );
+		
+		bsalida.write( hasta+"::"+msg );
 		bsalida.newLine();
 		bsalida.flush();
 		

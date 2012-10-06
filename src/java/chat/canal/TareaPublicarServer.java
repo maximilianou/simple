@@ -7,8 +7,9 @@ import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.util.HashMap;
 
-import chat.Application;
-import chat.tareas.Tarea;
+import chat.*;
+import chat.msg.*;
+import chat.tareas.*;
 
 public class TareaPublicarServer extends Tarea {
 	Socket sock;
@@ -36,10 +37,21 @@ public class TareaPublicarServer extends Tarea {
 				String msg = bis.readLine();
 				
 				getElLog().add(" ("+this.getId()+"::"+msg+") ");
+				
 				//Application.getInstance()
-				// TODO: Mensajes con timestamp
-				// TODO: Canales
-				// TODO: Cargar en una cola de mensajes de un canal,
+				// TEST: Mensajes con timestamp
+				String []msgCode = msg.split("::");
+				Mensaje mensajito = new Mensaje(msgCode[0], msgCode[1]);
+				// TEST: Canales
+				Canal actual = canales.get(mensajito.getIdCanal());
+				if( actual == null){
+					actual = new Canal(mensajito.getIdCanal());
+					canales.put(
+					    mensajito.getIdCanal(), 
+					       actual );
+				}
+				// TEST: Cargar en una cola de mensajes de un canal,
+				actual.getMensajes().addLast(mensajito);
 			}catch(Exception e){
 				e.printStackTrace();
 			}finally{

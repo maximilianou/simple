@@ -3,13 +3,11 @@ package chat.canal;
 import java.net.Socket;
 import java.util.HashMap;
 
-import chat.tareas.TareaEchoServer;
-import chat.echo.EchoServer;
+import chat.echo.*;
 
-public class PublicarServer extends EchoServer {
-	
+public class SuscribirServer  extends EchoServer {
 	private HashMap<String, Canal> canales = null;//new HashMap<String, Canal>();
-	public PublicarServer(int port, 
+	public SuscribirServer(int port, 
 			HashMap<String, Canal> canales) throws Exception{
 		super(port);
 		this.canales = canales;
@@ -19,8 +17,8 @@ public class PublicarServer extends EchoServer {
 	public void atender() throws Exception {
 		while (!SHUTDOWN) {
 			Socket socketPedido = servidorSocket.accept();
-			TareaPublicarServer tareaEcho 
-			   = new TareaPublicarServer("TPP"
+			TareaConsumirServer tareaEcho 
+			   = new TareaConsumirServer("TPC"
 					+ (clienteId++), 
 					socketPedido, 
 					canales);
