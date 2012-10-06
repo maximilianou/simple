@@ -21,9 +21,21 @@ public class PublicadorSuscriptorService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
+
+		SuscribirServer ss;
+		try {
+			ss = new SuscribirServer(portSus, canales);
+			Thread miServidor = new Thread(ss);
+			miServidor.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
+		
+		
 		
 		// Inicializa el Suscriptor
 		//  y le pasa al suscriptor los canales
+		
 	}
 	
 }

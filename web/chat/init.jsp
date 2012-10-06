@@ -11,7 +11,14 @@
 
 <%  
 out.println("Inicializando Servicios...<br/>");
-Application.getInstance().load(); 
+Application.getInstance().load(
+        "http://"+
+        request.getLocalAddr()+
+        ":"+
+        request.getLocalPort()+
+        "/"+
+        request.getContextPath()+
+        "/chat/prop.jsp"); 
 out.println("Inicializando Servicios OK!!<br/>");
 
 %>
