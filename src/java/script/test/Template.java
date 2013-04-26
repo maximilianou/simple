@@ -16,20 +16,15 @@ public class Template {
     public static String ejecutar(String elscript) throws ScriptException {
         String resultado = elscript;
         ScriptEngine se = new ScriptEngineManager().getEngineByName("javascript");
-        se.eval(elscript);
-        return resultado;
-    }
 
-    public static String leer(String archivo) throws FileNotFoundException, IOException {
-        String resultado = "";
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            while (br.ready()) {
-                resultado += br.readLine() + System.getProperty("line.separator");
-            }
+        se.eval(elscript);
+        Object o = se.get("resultado");
+        if (o != null) {
+            resultado = o.toString();
         }
         return resultado;
     }
-    
+
     public static void main(String[] args) {
         System.out.println("[..]Template Testing.");
         try {
@@ -37,7 +32,7 @@ public class Template {
         } catch (ScriptException ex) {
             Logger.getLogger(Template.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         System.out.println("[Ok]Template Testing.");
     }
 }

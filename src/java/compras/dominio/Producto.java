@@ -33,7 +33,7 @@ public class Producto {
 
     @Override
     public String toString() {
-        return "Producto:("+nombre+", "+ precio +", " +categoria+ ")";
+        return "{ \"nombre\": \""+nombre+"\", \"precio\": "+ precio +", " +categoria +" }"+ System.getProperty("line.separator");
     }
     
 }

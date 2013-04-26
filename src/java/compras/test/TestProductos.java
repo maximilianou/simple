@@ -47,7 +47,7 @@ public class TestProductos {
 
 
         TestProductos.productosClavesTest();
-        TestProductos.productosTest();
+       TestProductos.productosTest();
 
 
 

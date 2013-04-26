@@ -1,0 +1,11 @@
+{ "musicos":
+  [
+    { "id": 12, "nombre": "Miles Davis"       , "musica":"Jazz"       , "url":"http://en.wikipedia.org/wiki/Miles_Davis"},
+    { "id": 24, "nombre": "Jean Pierre Rampal", "musica":"Clasica"    , "url":"http://en.wikipedia.org/wiki/Jean-Pierre_Rampal"},
+    { "id": 35, "nombre": "Julio Sosa"        , "musica":"Tango"      , "url":"http://es.wikipedia.org/wiki/Julio_Sosa"},
+    { "id": 46, "nombre": "Charly Garcia"     , "musica":"Rock & Roll", "url":"http://es.wikipedia.org/wiki/Charly_Garcia"},
+    { "id": 52, "nombre": "Angus Young"       , "musica":"Heavy Metal", "url":"http://en.wikipedia.org/wiki/Angus_Young"},
+    { "id": 74, "nombre": "Ricardo Tapia"     , "musica":"Blues"      , "url":"http://es.wikipedia.org/wiki/La_Mississippi"}
+  ] 
+}
+
