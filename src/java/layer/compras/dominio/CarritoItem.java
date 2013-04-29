@@ -1,4 +1,4 @@
-package compras.dominio;
+package layer.compras.dominio;
 
 public class CarritoItem {
     private Producto producto;

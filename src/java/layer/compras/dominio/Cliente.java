@@ -1,4 +1,4 @@
-package compras.dominio;
+package layer.compras.dominio;
 
 public class Cliente {
     private String nombre;

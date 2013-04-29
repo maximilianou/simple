@@ -1,10 +1,10 @@
 
 
-package compras.test;
+package layer.compras.test;
 
-import compras.dominio.Categoria;
-import compras.logica.AdmCategoria;
-import compras.logica.AdmProducto;
+import layer.compras.dominio.Categoria;
+import layer.compras.logica.AdmCategoria;
+import layer.compras.logica.AdmProducto;
 import java.util.*;
 
 

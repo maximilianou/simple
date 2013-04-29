@@ -1,4 +1,4 @@
-package script.test;
+package js.script.test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

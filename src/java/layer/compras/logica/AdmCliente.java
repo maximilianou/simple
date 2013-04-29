@@ -1,9 +1,9 @@
 
 
-package compras.logica;
+package layer.compras.logica;
 
-import compras.dominio.Categoria;
-import compras.dominio.Cliente;
+import layer.compras.dominio.Categoria;
+import layer.compras.dominio.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 

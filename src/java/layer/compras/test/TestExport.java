@@ -1,10 +1,10 @@
-package compras.test;
+package layer.compras.test;
 
-import compras.logica.AdmProducto;
+import layer.compras.logica.AdmProducto;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.export.Export;
+import layer.compras.util.export.Export;
 
 public class TestExport {
 

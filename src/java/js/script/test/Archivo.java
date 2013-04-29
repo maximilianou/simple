@@ -1,6 +1,6 @@
 
 
-package script.test;
+package js.script.test;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

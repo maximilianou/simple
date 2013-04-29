@@ -1,5 +1,5 @@
 
-package compras.dominio;
+package layer.compras.dominio;
 
 public class Categoria {
     
