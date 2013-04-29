@@ -1,13 +1,21 @@
 Ejemplos Simples que van apareciendo.
 
-<h4> abc.clases01 </h4>
-<a href='http://www.maximilianou.com.ar'>Mi Sitio</a>
-Ejemplo de como crear una clase.
-Ejemplo de como crear un atritubo a la clase.
-Ejemplo de como crear metodos.
-Ejemplo de Encapsulamiento de los atributos, con los metodos getters y setters.
+http://www.maximilianou.com.ar
+
+Simple / src / java / abc / clases01 / Aviso.java
+Simple / src / java / abc / clases01 / test / TestAviso.java
+
+Ejemplo java de como crear una clase.
+Ejemplo java de como crear un atritubo a la clase.
+Ejemplo java de como crear metodos.
+Ejemplo java de Encapsulamiento de los atributos, con los metodos getters y setters.
 
 
-TODO: Reordenar ! !
-TODO: Reordenar ! !
+Simple / src / java / abc / clases02 / Aviso.java
+Simple / src / java / abc / clases02 / test / TestAvisoConstructores.java
+
+Ejemplo java de Constructor con los Campos Obligatorios.
+Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
+
+
 TODO: Reordenar ! !
