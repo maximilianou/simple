@@ -1,5 +1,5 @@
 
-package compras.logica;
+package layer.compras.logica;
 
 
 public class AdmCarrito {

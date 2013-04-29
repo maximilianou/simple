@@ -1,4 +1,4 @@
-package compras.test;
+package layer.compras.test;
 
 public class TestTodosLosCasos {
 

@@ -1,7 +1,7 @@
-package compras.test;
+package layer.compras.test;
 
-import compras.dominio.Producto;
-import compras.logica.AdmProducto;
+import layer.compras.dominio.Producto;
+import layer.compras.logica.AdmProducto;
 import java.util.Iterator;
 import java.util.List;
 

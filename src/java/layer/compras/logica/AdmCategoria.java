@@ -1,6 +1,6 @@
-package compras.logica;
+package layer.compras.logica;
 
-import compras.dominio.Categoria;
+import layer.compras.dominio.Categoria;
 import java.util.*;
 
 public class AdmCategoria {

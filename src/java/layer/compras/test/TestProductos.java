@@ -1,8 +1,8 @@
-package compras.test;
+package layer.compras.test;
 
-import compras.dominio.Producto;
-import compras.logica.AdmCategoria;
-import compras.logica.AdmProducto;
+import layer.compras.dominio.Producto;
+import layer.compras.logica.AdmCategoria;
+import layer.compras.logica.AdmProducto;
 import java.util.*;
 
 public class TestProductos {

@@ -1,7 +1,7 @@
-package compras.logica;
+package layer.compras.logica;
 
-import compras.dominio.Categoria;
-import compras.dominio.Producto;
+import layer.compras.dominio.Categoria;
+import layer.compras.dominio.Producto;
 import java.util.*;
 
 public class AdmProducto {
