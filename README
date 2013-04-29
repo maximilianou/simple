@@ -1,7 +1,7 @@
 Ejemplos Simples que van apareciendo.
 
-== abc.clases01 ==
-[http://www.maximilianou.com.ar | Mi Sitio]
+<h4> abc.clases01 </h4>
+<a href='http://www.maximilianou.com.ar'>Mi Sitio</a>
 Ejemplo de como crear una clase.
 Ejemplo de como crear un atritubo a la clase.
 Ejemplo de como crear metodos.
