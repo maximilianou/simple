@@ -17,5 +17,11 @@ Simple / src / java / abc / clases02 / test / TestAvisoConstructores.java
 Ejemplo java de Constructor con los Campos Obligatorios.
 Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
 
+Simple / src / java / abc / clases03 / Aviso.java
+Simple / src / java / abc / clases03 / test / TestAvisoExcepcion.java
+
+Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
+Ejemplo java Excepcion muy simple generica, luego se veran especificas.
+
 
 TODO: Reordenar ! !
