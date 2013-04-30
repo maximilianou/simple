@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package abc.clases03.test;
+package abc.clases03;
 
 import abc.clases03.Aviso;
 import java.util.logging.Level;
