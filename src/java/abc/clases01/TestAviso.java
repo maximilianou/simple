@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package abc.clases01.test;
+package abc.clases01;
 
 import abc.clases01.Aviso;
 
