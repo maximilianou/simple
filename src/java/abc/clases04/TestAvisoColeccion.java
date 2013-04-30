@@ -8,10 +8,10 @@ import java.util.logging.Logger;
  *
  * @author maximilianou
  */
-public class TestAvisoColecciones {
+public class TestAvisoColeccion {
 
     public static void main(String[] args) {
-        System.out.println("[..] " + TestAvisoColecciones.class.getCanonicalName() + " --------");
+        System.out.println("[..] " + TestAvisoColeccion.class.getCanonicalName() + " --------");
 
         ArrayList<Aviso> listaAvisos = new ArrayList();
         System.out.println("Lista Size Cero: " + listaAvisos.size());
@@ -53,12 +53,12 @@ public class TestAvisoColecciones {
         } catch (Exception ex) {
             System.out.println("[ERROR] Hubo un error en la coleccion");
             ex.printStackTrace();
-            Logger.getLogger(TestAvisoColecciones.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TestAvisoColeccion.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(" -- ------------------------------------------ -- ");
 
 
-        System.out.println("[Ok] " + TestAvisoColecciones.class.getCanonicalName() + " --------");
+        System.out.println("[Ok] " + TestAvisoColeccion.class.getCanonicalName() + " --------");
 
     }
 }
