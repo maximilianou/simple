@@ -33,7 +33,10 @@ public class Aviso {
     /**
      * @param titulo the titulo to set
      */
-    public void setTitulo(String titulo) {
+    public void setTitulo(String titulo) throws Exception {
+        if( titulo == null || titulo.length() < 1 ){
+            throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
+        }
         this.titulo = titulo;
     }
 
@@ -63,7 +66,7 @@ public class Aviso {
      */
     public void setPrecio(float precio) throws Exception {
         if( precio < 0 ){
-            throw new Exception("Un aviso no puede tener precio negativo.");
+            throw new Exception("Un aviso debe tener un precio positivo.");
         }
         this.precio = precio;
     }
