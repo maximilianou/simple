@@ -1,7 +1,10 @@
+-------------------------------------
 Ejemplos Simples que van apareciendo.
 
+-------------------------------------
 http://www.maximilianou.com.ar
 
+-------------------------------------
 Simple / src / java / abc / clases01 / Aviso.java
 Simple / src / java / abc / clases01 / test / TestAviso.java
 
@@ -11,12 +14,14 @@ Ejemplo java de como crear metodos.
 Ejemplo java de Encapsulamiento de los atributos, con los metodos getters y setters.
 
 
+-------------------------------------
 Simple / src / java / abc / clases02 / Aviso.java
 Simple / src / java / abc / clases02 / test / TestAvisoConstructores.java
 
 Ejemplo java de Constructor con los Campos Obligatorios.
 Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
 
+-------------------------------------
 Simple / src / java / abc / clases03 / Aviso.java
 Simple / src / java / abc / clases03 / test / TestAvisoExcepcion.java
 
@@ -24,4 +29,6 @@ Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
 Ejemplo java Excepcion muy simple generica, luego se veran especificas.
 
 
-TODO: Reordenar ! !
+-------------------------------------
+TODO: Reordenar lo que esta demas ! !
+-------------------------------------
