@@ -8,8 +8,8 @@
 
 ##  Clases, Objetos o Instancias. Encapsular.
 -----
-      abc.clases01.Aviso.java
-       abc.clases01.TestAviso.java
+>      abc.clases01.Aviso.java
+>      abc.clases01.TestAviso.java
 
 * Ejemplo java de como crear una clase.
 * Ejemplo java de como crear un atritubo a la clase.
@@ -26,16 +26,16 @@
 
 ##  Excepcion, Validaciones.
 -----
->>      abc.clases03.Aviso.java
->>      abc.clases03.TestAvisoExcepcion.java
+>      abc.clases03.Aviso.java
+>      abc.clases03.TestAvisoExcepcion.java
 
 * Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
 * Ejemplo java Excepcion muy simple generica, luego se veran especificas.
 
 ##  Lista Coleccion, Cargar, recorrer y Vaciar.
 -----
- >      abc.clases04.Aviso.java
- >      abc.clases04.TestAvisoColeccion.java
+>      abc.clases04.Aviso.java
+>      abc.clases04.TestAvisoColeccion.java
 
 * Ejemplo java una coleccion, una lista particularmente.
 * Ejemplo java de como llenar una coleccion.
