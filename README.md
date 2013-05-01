@@ -18,24 +18,24 @@
 
 ##  Constructores, Atributos Obligatorios.
 -----
-> abc.clases02.Aviso.java
-> abc.clases02.TestAvisoConstructores.java
+>      abc.clases02.Aviso.java
+>      abc.clases02.TestAvisoConstructores.java
 
 * Ejemplo java de Constructor con los Campos Obligatorios.
 * Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
 
 ##  Excepcion, Validaciones.
 -----
-> abc.clases03.Aviso.java
-> abc.clases03.TestAvisoExcepcion.java
+>>      abc.clases03.Aviso.java
+>>      abc.clases03.TestAvisoExcepcion.java
 
 * Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
 * Ejemplo java Excepcion muy simple generica, luego se veran especificas.
 
 ##  Lista Coleccion, Cargar, recorrer y Vaciar.
 -----
-> abc.clases04.Aviso.java
-> abc.clases04.TestAvisoColeccion.java
+ >      abc.clases04.Aviso.java
+ >      abc.clases04.TestAvisoColeccion.java
 
 * Ejemplo java una coleccion, una lista particularmente.
 * Ejemplo java de como llenar una coleccion.
