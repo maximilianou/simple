@@ -8,8 +8,9 @@
 
 ##  Clases, Objetos o Instancias. Encapsular.
 -----
-Simple / src / java / abc / clases01 / Aviso.java
-Simple / src / java / abc / clases01 / test / TestAviso.java
+  :::java
+    abc.clases01.Aviso.java
+    abc.clases01.TestAviso.java
 
 * Ejemplo java de como crear una clase.
 * Ejemplo java de como crear un atritubo a la clase.
@@ -18,24 +19,27 @@ Simple / src / java / abc / clases01 / test / TestAviso.java
 
 ##  Constructores, Atributos Obligatorios.
 -----
-Simple / src / java / abc / clases02 / Aviso.java
-Simple / src / java / abc / clases02 / test / TestAvisoConstructores.java
+  :::java
+    abc.clases02.Aviso.java
+    abc.clases02.TestAvisoConstructores.java
 
 * Ejemplo java de Constructor con los Campos Obligatorios.
 * Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
 
 ##  Excepcion, Validaciones.
 -----
-Simple / src / java / abc / clases03 / Aviso.java
-Simple / src / java / abc / clases03 / test / TestAvisoExcepcion.java
+  :::java
+    abc.clases03.Aviso.java
+    abc.clases03.TestAvisoExcepcion.java
 
 * Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
 * Ejemplo java Excepcion muy simple generica, luego se veran especificas.
 
 ##  Lista Coleccion, Cargar, recorrer y Vaciar.
 -----
-Simple / src / java / abc / clases04 / Aviso.java
-Simple / src / java / abc / clases04 / test / TestAvisoColeccion.java
+  :::java
+    abc.clases04.Aviso.java
+    abc.clases04.TestAvisoColeccion.java
 
 * Ejemplo java una coleccion, una lista particularmente.
 * Ejemplo java de como llenar una coleccion.
