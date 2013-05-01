@@ -1,10 +1,10 @@
 -------------------------------------
-Ejemplos Simples que van apareciendo.
+# Ejemplos Simples que van apareciendo.
 
 -------------------------------------
 http://www.maximilianou.com.ar
 
-------------------------------------- Clases, Objetos o Instancias. Encapsular.
+## ------------------------------------- Clases, Objetos o Instancias. Encapsular.
 Simple / src / java / abc / clases01 / Aviso.java
 Simple / src / java / abc / clases01 / test / TestAviso.java
 
