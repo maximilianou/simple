@@ -1,4 +1,4 @@
-package abc.clases04;
+package abc.clases05;
 
 /**
  *
@@ -6,16 +6,19 @@ package abc.clases04;
  */
 public class Aviso {
     
-            private String titulo;
+    private String titulo;
     private String descripcion;
     private float precio;
 
-    public Aviso(String titulo, float precio) throws Exception{
+    private Categoria categoria; 
+    
+    public Aviso(String titulo, float precio, Categoria categ) throws Exception{
         this.setPrecio(precio);
         this.setTitulo(titulo);
+        this.setCategoria(categ);
     }
-    public Aviso(String titulo, float precio, String descripcion) throws Exception{
-        this(titulo, precio);
+    public Aviso(String titulo, float precio, Categoria categ, String descripcion) throws Exception{
+        this(titulo, precio, categ);
         this.setDescripcion(descripcion);
     }
     
@@ -71,6 +74,20 @@ public class Aviso {
             throw new Exception("Un aviso debe tener un precio positivo.");
         }
         this.precio = precio;
+    }
+
+    /**
+     * @return the categoria
+     */
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    /**
+     * @param categoria the categoria to set
+     */
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
 
