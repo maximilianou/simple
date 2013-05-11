@@ -8,6 +8,7 @@
 * Ejemplo java de como crear metodos.
 * Ejemplo java de Encapsulamiento de los atributos, con los metodos getters y setters.
 
+----- 
 >      package abc.clases01;
 >      
 >      /**
@@ -62,6 +63,7 @@
 >          }
 >      
 >      }
+----- 
 >      package abc.clases01;
 >      
 >      import abc.clases01.Aviso;
@@ -101,6 +103,7 @@
 >              System.out.println("[Ok] "+TestAviso.class.getCanonicalName()+" --------");
 >          }
 >      }
+----- 
 ##  Constructores, Atributos Obligatorios.
 -----
 >      abc.clases02.Aviso.java
@@ -109,6 +112,7 @@
 * Ejemplo java de Constructor con los Campos Obligatorios.
 * Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
 
+----- 
 >      /*
 >       * To change this template, choose Tools | Templates
 >       * and open the template in the editor.
@@ -177,6 +181,7 @@
 >              this.precio = precio;
 >          }
 >      }
+----- 
 >      /*
 >       * To change this template, choose Tools | Templates
 >       * and open the template in the editor.
@@ -237,6 +242,7 @@
 >          }
 >       
 >      }
+----- 
 ##  Excepcion, Validaciones.
 -----
 >      abc.clases03.Aviso.java
@@ -245,6 +251,7 @@
 * Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
 * Ejemplo java Excepcion muy simple generica, luego se veran especificas.
 
+----- 
 ##  Lista Coleccion, Cargar, recorrer y Vaciar.
 -----
 >      abc.clases04.Aviso.java
@@ -255,3 +262,4 @@
 * Ejemplo java de como recorrer una coleccion.
 * Ejemplo java de como vaciar una coleccion.
 
+----- 
