@@ -41,7 +41,7 @@ public class Readme {
         for (String s : archivos) {
             String p = "";
             if (!s.endsWith(salida)) {
-                p = ">   ";
+                p = ">      ";
             }
             try {
                 exportar(s, p);
