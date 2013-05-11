@@ -71,6 +71,10 @@ public class Readme {
             barch.write(pref + bin.readLine());
             barch.newLine();
         }
+        barch.write("----- ");
+        barch.newLine();
+
+
     }
 
     public static void main(String[] args) {
