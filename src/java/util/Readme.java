@@ -25,7 +25,11 @@ public class Readme {
         "src/java/abc/clases02/Aviso.java",
         "src/java/abc/clases02/TestAvisoConstructores.java",
         "src/java/abc/clases03/README.md",
-        "src/java/abc/clases04/README.md"
+        "src/java/abc/clases03/Aviso.java",
+        "src/java/abc/clases03/TestAvisoExcepcion.java",
+        "src/java/abc/clases04/README.md",
+        "src/java/abc/clases04/Aviso.java",
+        "src/java/abc/clases04/TestAvisoColeccion.java"
     };
     FileWriter arch = null;
     BufferedWriter barch = null;
