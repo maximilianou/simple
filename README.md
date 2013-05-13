@@ -114,10 +114,6 @@
 >      abc.clases02.TestAvisoConstructores.java
 
 ----- 
->      /*
->       * To change this template, choose Tools | Templates
->       * and open the template in the editor.
->       */
 >      package abc.clases02;
 >      
 >      /**
@@ -183,10 +179,6 @@
 >          }
 >      }
 ----- 
->      /*
->       * To change this template, choose Tools | Templates
->       * and open the template in the editor.
->       */
 >      package abc.clases02;
 >      
 >      import abc.clases02.Aviso;
@@ -253,10 +245,6 @@
 >      abc.clases03.Aviso.java
 >      abc.clases03.TestAvisoExcepcion.java
 ----- 
->      /*
->       * To change this template, choose Tools | Templates
->       * and open the template in the editor.
->       */
 >      package abc.clases03;
 >      
 >      /**
@@ -328,10 +316,6 @@
 >      
 >      }
 ----- 
->      /*
->       * To change this template, choose Tools | Templates
->       * and open the template in the editor.
->       */
 >      package abc.clases03;
 >      
 >      import abc.clases03.Aviso;
