@@ -1,12 +1,6 @@
 package util;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +23,11 @@ public class Readme {
         "src/java/abc/clases03/TestAvisoExcepcion.java",
         "src/java/abc/clases04/README.md",
         "src/java/abc/clases04/Aviso.java",
-        "src/java/abc/clases04/TestAvisoColeccion.java"
+        "src/java/abc/clases04/TestAvisoColeccion.java",
+        "src/java/pattern/structure/f/README.md",
+        "src/java/pattern/structure/f/ProxyTest.java",
+        "src/java/util/README.md",
+        "src/java/util/Readme.java"
     };
     FileWriter arch = null;
     BufferedWriter barch = null;

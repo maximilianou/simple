@@ -565,3 +565,193 @@
 >          }
 >      }
 ----- 
+##  Patrones, Estructurales, Proxy.
+-----
+
+* Ejemplo java patron proxy.
+* Ejemplo java proxy de paginas web.
+
+>      pattern.structure.f.ProxyTest.java
+----- 
+>      package pattern.structure.f;
+>      import java.net.*;
+>      import java.util.*;
+>      import java.io.*;
+>      public class ProxyTest {
+>          public static void main(String[] args) {
+>              try {
+>                  PagesProxy pp = new PagesProxy();
+>                  pp.getPage("http://www.clarin.com");
+>                  pp.getPage("http://www.lanacion.com");
+>                  pp.getPage("http://www.ccc.uba.ar");
+>                  pp.getPage("http://www.clarin.com");
+>                  pp.getPage("http://www.lanacion.com");
+>                  pp.getPage("http://www.ccc.uba.ar");
+>                  pp.getPage("http://www.clarin.com");
+>                  pp.getPage("http://www.lanacion.com");
+>                  pp.getPage("http://www.ccc.uba.ar");
+>              } catch (Exception e) {
+>                  e.printStackTrace();
+>              }
+>          }
+>      }
+>      class PagesProxy {
+>          private HashMap<String, Page> paginas = new HashMap<String, Page>();
+>          public Page getPage(String urlp) throws MalformedURLException, IOException {
+>              Page p = paginas.get(urlp);
+>              URL url = new URL(urlp);// Cambia siempre
+>              URLConnection urlCon = url.openConnection();
+>              if (p != null) {
+>                  System.out.println("" + urlCon.getLastModified() + ">" + p.getLastUpdate());
+>                  if (urlCon.getLastModified() == 0 || urlCon.getLastModified() > p.getLastUpdate()) {
+>                      paginas.put(urlp, buscarPagina(urlp, urlCon));
+>                  } else { // En este caso no se actualizo la pagina.
+>                  }
+>              } else {
+>                  paginas.put(urlp, buscarPagina(urlp, urlCon));
+>              }
+>              return p;
+>          }
+>          public Page buscarPagina(String url, URLConnection urlCon) throws IOException {
+>              System.out.println("GET: [" + url + "]");
+>              Page p = new Page(url);
+>              p.setLastUpdate(urlCon.getLastModified());
+>              InputStreamReader isr = null;
+>              BufferedReader r = null; 
+>              try{
+>                  isr = new InputStreamReader(urlCon.getInputStream());
+>                  r = new BufferedReader(isr);
+>                  if(r.ready()) {//while (r.ready()) {
+>                      p.setContenido(p.getContenido() + r.readLine());
+>                  }
+>              }finally{
+>                  r.close();
+>                  isr.close();
+>              }
+>              return p;
+>          }
+>      }
+>      class Page {
+>          private String url;
+>          public Page(String url) {
+>              this.url = url;
+>          }
+>          private long lastUpdate = 0;
+>          private String contenido;
+>          public long getLastUpdate() {
+>              return lastUpdate;
+>          }
+>          public void setLastUpdate(long lastUpdate) {
+>              this.lastUpdate = lastUpdate;
+>          }
+>          public String getContenido() {
+>              return contenido;
+>          }
+>          public void setContenido(String contenido) {
+>              this.contenido = contenido;
+>          }
+>      }
+----- 
+##  Export, Utilitario, Herramienta.
+-----
+
+* Ejemplo java exportar los archivos README.md
+* Ejemplo java exportar el codigo fuente.
+
+>      util.Readme.java
+----- 
+>      package util;
+>      
+>      import java.io.*;
+>      import java.util.logging.Level;
+>      import java.util.logging.Logger;
+>      
+>      /**
+>       *
+>       * @author maximilianou
+>       */
+>      public class Readme {
+>      
+>          String salida = "README.md";
+>          String[] archivos = {
+>              "src/java/abc/clases01/README.md",
+>              "src/java/abc/clases01/Aviso.java",
+>              "src/java/abc/clases01/TestAviso.java",
+>              "src/java/abc/clases02/README.md",
+>              "src/java/abc/clases02/Aviso.java",
+>              "src/java/abc/clases02/TestAvisoConstructores.java",
+>              "src/java/abc/clases03/README.md",
+>              "src/java/abc/clases03/Aviso.java",
+>              "src/java/abc/clases03/TestAvisoExcepcion.java",
+>              "src/java/abc/clases04/README.md",
+>              "src/java/abc/clases04/Aviso.java",
+>              "src/java/abc/clases04/TestAvisoColeccion.java",
+>              "src/java/pattern/structure/f/README.md",
+>              "src/java/pattern/structure/f/ProxyTest.java",
+>              "src/java/util/README.md",
+>              "src/java/util/Readme.java"
+>          };
+>          FileWriter arch = null;
+>          BufferedWriter barch = null;
+>      
+>          public void inicializar() throws IOException {
+>              File fs = new File(salida);
+>              fs.delete();
+>              arch = new FileWriter(salida, true);
+>              barch = new BufferedWriter(arch);
+>          }
+>      
+>          public void exportar() {
+>              for (String s : archivos) {
+>                  String p = "";
+>                  if (!s.endsWith(salida)) {
+>                      p = ">      ";
+>                  }
+>                  try {
+>                      exportar(s, p);
+>                  } catch (Exception ex) {
+>                      Logger.getLogger(Readme.class.getName()).log(Level.SEVERE, null, ex);
+>                      System.out.println("[ERROR]Readme " + ex.getMessage() + s);
+>      
+>                  }
+>              }
+>              try {
+>                  barch.close();
+>              } catch (IOException ex) {
+>                  Logger.getLogger(Readme.class.getName()).log(Level.SEVERE, null, ex);
+>              }
+>              try {
+>                  arch.close();
+>              } catch (IOException ex) {
+>                  Logger.getLogger(Readme.class.getName()).log(Level.SEVERE, null, ex);
+>              }
+>      
+>          }
+>      
+>          public void exportar(String archName, String pref) throws FileNotFoundException, IOException {
+>              FileReader in = new FileReader(archName);
+>              BufferedReader bin = new BufferedReader(in);
+>              while (bin.ready()) {
+>                  barch.write(pref + bin.readLine());
+>                  barch.newLine();
+>              }
+>              barch.write("----- ");
+>              barch.newLine();
+>      
+>      
+>          }
+>      
+>          public static void main(String[] args) {
+>              System.out.println("[..]Readme");
+>              Readme r = new Readme();
+>              try {
+>                  r.inicializar();
+>                  r.exportar();
+>              } catch (IOException ex) {
+>                  Logger.getLogger(Readme.class.getName()).log(Level.SEVERE, null, ex);
+>                  System.out.println("[ERROR]Readme");
+>              }
+>              System.out.println("[ok]Readme");
+>          }
+>      }
+----- 
