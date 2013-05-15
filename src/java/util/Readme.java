@@ -24,6 +24,8 @@ public class Readme {
         "src/java/abc/clases04/README.md",
         "src/java/abc/clases04/Aviso.java",
         "src/java/abc/clases04/TestAvisoColeccion.java",
+        "src/java/pattern/create/a/README.md",
+        "src/java/pattern/create/a/Singleton.java",
         "src/java/pattern/structure/f/README.md",
         "src/java/pattern/structure/f/ProxyTest.java",
         "src/java/util/README.md",
