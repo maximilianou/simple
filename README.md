@@ -572,6 +572,7 @@
 * Ejemplo java proxy de paginas web.
 
 >        pattern.structure.f.ProxyTest.java
+>        
 ----- 
 >      package pattern.structure.f;
 >      import java.net.*;
@@ -659,6 +660,7 @@
 * Ejemplo java exportar el codigo fuente.
 
 >        util.Readme.java
+>        
 ----- 
 >      package util;
 >      
