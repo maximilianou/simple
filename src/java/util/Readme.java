@@ -30,6 +30,8 @@ public class Readme {
         "src/java/pattern/create/b/LazyInitialization.java",
         "src/java/pattern/create/c/README.md",
         "src/java/pattern/create/c/ObjectPool.java",
+        "src/java/pattern/create/h/README.md",
+        "src/java/pattern/create/h/AbsFactPat.java",
         "src/java/pattern/structure/f/README.md",
         "src/java/pattern/structure/f/ProxyTest.java",
         "src/java/util/README.md",

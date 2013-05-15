@@ -6,4 +6,5 @@
 * Ejemplo java inicializacion sobre demanda.
 
 >        pattern.create.a.LazyInitialization.java
->        
+>     
+   
