@@ -1,14 +1,11 @@
 package abc.clases02;
-
 import abc.clases02.Aviso;
-
 /**
- *
  * @author maximilianou
  */
 public class TestAvisoConstructores {
        public static void main(String [] args){
-        System.out.println("[..] "+TestAvisoConstructores.class.getCanonicalName()+" --------");
+        System.out.println("[....] TestAvisoConstructores  --------");
         
         System.out.println(" -- ---------------------------------------- -- ");
         System.out.println(" -- Una Instancia u Objeto de la clase Aviso -- ");
@@ -50,7 +47,7 @@ public class TestAvisoConstructores {
         System.out.println(avisoTres.getDescripcion());
         System.out.println(" -- ---------------------------------------- -- ");
 
-        System.out.println("[Ok] "+TestAvisoConstructores.class.getCanonicalName()+" --------");
+        System.out.println("[ OK ] TestAvisoConstructores  --------");
     }
  
 }

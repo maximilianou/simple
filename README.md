@@ -10,9 +10,7 @@
 >      abc.clases01.TestAviso.java
 ----- 
 >      package abc.clases01;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class Aviso {
@@ -20,44 +18,21 @@
 >          private String descripcion;
 >          private float precio;
 >      
->          /**
->           * @return the titulo
->           */
 >          public String getTitulo() {
 >              return titulo;
 >          }
->      
->          /**
->           * @param titulo the titulo to set
->           */
 >          public void setTitulo(String titulo) {
 >              this.titulo = titulo;
 >          }
->      
->          /**
->           * @return the descripcion
->           */
 >          public String getDescripcion() {
 >              return descripcion;
 >          }
->      
->          /**
->           * @param descripcion the descripcion to set
->           */
 >          public void setDescripcion(String descripcion) {
 >              this.descripcion = descripcion;
 >          }
->      
->          /**
->           * @return the precio
->           */
 >          public float getPrecio() {
 >              return precio;
 >          }
->      
->          /**
->           * @param precio the precio to set
->           */
 >          public void setPrecio(float precio) {
 >              this.precio = precio;
 >          }
@@ -65,16 +40,13 @@
 >      }
 ----- 
 >      package abc.clases01;
->      
 >      import abc.clases01.Aviso;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class TestAviso {
 >          public static void main(String [] args){
->              System.out.println("[..] "+TestAviso.class.getCanonicalName()+" --------");
+>              System.out.println("[....] TestAviso --------");
 >              
 >              System.out.println(" -- ---------------------------------------- -- ");
 >              System.out.println(" -- Una Instancia u Objeto de la clase Aviso -- ");
@@ -100,7 +72,7 @@
 >              System.out.println(avisoDos.getDescripcion());
 >              System.out.println(" -- ---------------------------------------- -- ");
 >      
->              System.out.println("[Ok] "+TestAviso.class.getCanonicalName()+" --------");
+>              System.out.println("[ OK ] TestAviso --------");
 >          }
 >      }
 ----- 
@@ -115,9 +87,7 @@
 
 ----- 
 >      package abc.clases02;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class Aviso {
@@ -136,60 +106,34 @@
 >              this.setDescripcion(descripcion);
 >          }
 >          
->          /**
->           * @return the titulo
->           */
 >          public String getTitulo() {
 >              return titulo;
 >          }
->      
->          /**
->           * @param titulo the titulo to set
->           */
 >          public void setTitulo(String titulo) {
 >              this.titulo = titulo;
 >          }
->      
->          /**
->           * @return the descripcion
->           */
 >          public String getDescripcion() {
 >              return descripcion;
 >          }
->      
->          /**
->           * @param descripcion the descripcion to set
->           */
 >          public void setDescripcion(String descripcion) {
 >              this.descripcion = descripcion;
 >          }
->      
->          /**
->           * @return the precio
->           */
 >          public float getPrecio() {
 >              return precio;
 >          }
->      
->          /**
->           * @param precio the precio to set
->           */
 >          public void setPrecio(float precio) {
 >              this.precio = precio;
 >          }
 >      }
 ----- 
 >      package abc.clases02;
->      
 >      import abc.clases02.Aviso;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class TestAvisoConstructores {
 >             public static void main(String [] args){
->              System.out.println("[..] "+TestAvisoConstructores.class.getCanonicalName()+" --------");
+>              System.out.println("[....] TestAvisoConstructores  --------");
 >              
 >              System.out.println(" -- ---------------------------------------- -- ");
 >              System.out.println(" -- Una Instancia u Objeto de la clase Aviso -- ");
@@ -231,7 +175,7 @@
 >              System.out.println(avisoTres.getDescripcion());
 >              System.out.println(" -- ---------------------------------------- -- ");
 >      
->              System.out.println("[Ok] "+TestAvisoConstructores.class.getCanonicalName()+" --------");
+>              System.out.println("[ OK ] TestAvisoConstructores  --------");
 >          }
 >       
 >      }
@@ -246,13 +190,11 @@
 >      abc.clases03.TestAvisoExcepcion.java
 ----- 
 >      package abc.clases03;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class Aviso {
->              private String titulo;
+>          private String titulo;
 >          private String descripcion;
 >          private float precio;
 >      
@@ -265,48 +207,25 @@
 >              this.setTitulo(titulo);
 >              this.setDescripcion(descripcion);
 >          }
->          
->          /**
->           * @return the titulo
->           */
+>      
 >          public String getTitulo() {
 >              return titulo;
 >          }
->      
->          /**
->           * @param titulo the titulo to set
->           */
 >          public void setTitulo(String titulo) throws Exception {
 >              if( titulo == null || titulo.length() < 1 ){
 >                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
 >              }
 >              this.titulo = titulo;
 >          }
->      
->          /**
->           * @return the descripcion
->           */
 >          public String getDescripcion() {
 >              return descripcion;
 >          }
->      
->          /**
->           * @param descripcion the descripcion to set
->           */
 >          public void setDescripcion(String descripcion) {
 >              this.descripcion = descripcion;
 >          }
->      
->          /**
->           * @return the precio
->           */
 >          public float getPrecio() {
 >              return precio;
 >          }
->      
->          /**
->           * @param precio the precio to set
->           */
 >          public void setPrecio(float precio) throws Exception {
 >              if( precio < 0 ){
 >                  throw new Exception("Un aviso debe tener un precio positivo.");
@@ -317,19 +236,16 @@
 >      }
 ----- 
 >      package abc.clases03;
->      
 >      import abc.clases03.Aviso;
 >      import java.util.logging.Level;
 >      import java.util.logging.Logger;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class TestAvisoExcepcion {
 >      
 >          public static void main(String[] args) {
->              System.out.println("[..] " + TestAvisoExcepcion.class.getCanonicalName() + " --------");
+>              System.out.println("[....]TestAvisoExcepcion --------");
 >      
 >              System.out.println(" -- ------------------------------------------ -- ");
 >              System.out.println(" -- Instancias u Objetos de la clase Aviso -- ");
@@ -405,7 +321,7 @@
 >              System.out.println(" -- ---------------------------------------- -- ");
 >      
 >      
->              System.out.println("[Ok] " + TestAvisoExcepcion.class.getCanonicalName() + " --------");
+>              System.out.println("[ OK ]TestAvisoExcepcion --------");
 >          }
 >      }
 ----- 
@@ -421,14 +337,11 @@
 
 ----- 
 >      package abc.clases04;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class Aviso {
->          
->                  private String titulo;
+>          private String titulo;
 >          private String descripcion;
 >          private float precio;
 >      
@@ -446,58 +359,30 @@
 >              return "Aviso(Titulo:"+this.titulo+"; Precio:"+this.precio+"; Descripcion:"+this.descripcion+")";
 >          }
 >          
->          
->          /**
->           * @return the titulo
->           */
 >          public String getTitulo() {
 >              return titulo;
 >          }
->      
->          /**
->           * @param titulo the titulo to set
->           */
 >          public void setTitulo(String titulo) throws Exception {
 >              if( titulo == null || titulo.length() < 1 ){
 >                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
 >              }
 >              this.titulo = titulo;
 >          }
->      
->          /**
->           * @return the descripcion
->           */
 >          public String getDescripcion() {
 >              return descripcion;
 >          }
->      
->          /**
->           * @param descripcion the descripcion to set
->           */
 >          public void setDescripcion(String descripcion) {
 >              this.descripcion = descripcion;
 >          }
->      
->          /**
->           * @return the precio
->           */
 >          public float getPrecio() {
 >              return precio;
 >          }
->      
->          /**
->           * @param precio the precio to set
->           */
 >          public void setPrecio(float precio) throws Exception {
 >              if( precio < 0 ){
 >                  throw new Exception("Un aviso debe tener un precio positivo.");
 >              }
 >              this.precio = precio;
 >          }
->      
->      
->      
->          
 >      }
 ----- 
 >      package abc.clases04;
@@ -638,8 +523,6 @@
 >              }
 >              return INSTANCE;
 >          }
->      
->          
 >      }
 ----- 
 ##  Patrones, Crear, Pool de Objetos, Recursos.
@@ -799,7 +682,6 @@
 >              return p;
 >          }
 >      }
->      
 ----- 
 ##  Patrones, Estructurales, Proxy.
 -----
@@ -818,15 +700,18 @@
 >          public static void main(String[] args) {
 >              try {
 >                  PagesProxy pp = new PagesProxy();
->                  pp.getPage("http://www.clarin.com");
->                  pp.getPage("http://www.lanacion.com");
+>                  pp.getPage("http://www.linkedin.com/in/maximilianou");
+>                  pp.getPage("http://www.linkedin.com/company/crear-buenos-aires");
 >                  pp.getPage("http://www.ccc.uba.ar");
->                  pp.getPage("http://www.clarin.com");
->                  pp.getPage("http://www.lanacion.com");
+>                  pp.getPage("http://www.centro27.edu.ar/");
+>                  pp.getPage("http://www.linkedin.com/in/maximilianou");
+>                  pp.getPage("http://www.linkedin.com/company/crear-buenos-aires");
 >                  pp.getPage("http://www.ccc.uba.ar");
->                  pp.getPage("http://www.clarin.com");
->                  pp.getPage("http://www.lanacion.com");
+>                  pp.getPage("http://www.centro27.edu.ar/");
+>                  pp.getPage("http://www.linkedin.com/in/maximilianou");
+>                  pp.getPage("http://www.linkedin.com/company/crear-buenos-aires");
 >                  pp.getPage("http://www.ccc.uba.ar");
+>                  pp.getPage("http://www.centro27.edu.ar/");
 >              } catch (Exception e) {
 >                  e.printStackTrace();
 >              }
@@ -899,17 +784,13 @@
 >        
 ----- 
 >      package util;
->      
 >      import java.io.*;
 >      import java.util.logging.Level;
 >      import java.util.logging.Logger;
->      
 >      /**
->       *
 >       * @author maximilianou
 >       */
 >      public class Readme {
->      
 >          String salida = "README.md";
 >          String[] archivos = {
 >              "src/java/abc/clases01/README.md",
@@ -939,14 +820,12 @@
 >          };
 >          FileWriter arch = null;
 >          BufferedWriter barch = null;
->      
 >          public void inicializar() throws IOException {
 >              File fs = new File(salida);
 >              fs.delete();
 >              arch = new FileWriter(salida, true);
 >              barch = new BufferedWriter(arch);
 >          }
->      
 >          public void exportar() {
 >              for (String s : archivos) {
 >                  String p = "";
@@ -971,9 +850,7 @@
 >              } catch (IOException ex) {
 >                  Logger.getLogger(Readme.class.getName()).log(Level.SEVERE, null, ex);
 >              }
->      
 >          }
->      
 >          public void exportar(String archName, String pref) throws FileNotFoundException, IOException {
 >              FileReader in = new FileReader(archName);
 >              BufferedReader bin = new BufferedReader(in);
@@ -983,10 +860,7 @@
 >              }
 >              barch.write("----- ");
 >              barch.newLine();
->      
->      
 >          }
->      
 >          public static void main(String[] args) {
 >              System.out.println("[..]Readme");
 >              Readme r = new Readme();
