@@ -6,15 +6,18 @@ public class ProxyTest {
     public static void main(String[] args) {
         try {
             PagesProxy pp = new PagesProxy();
-            pp.getPage("http://www.clarin.com");
-            pp.getPage("http://www.lanacion.com");
+            pp.getPage("http://www.linkedin.com/in/maximilianou");
+            pp.getPage("http://www.linkedin.com/company/crear-buenos-aires");
             pp.getPage("http://www.ccc.uba.ar");
-            pp.getPage("http://www.clarin.com");
-            pp.getPage("http://www.lanacion.com");
+            pp.getPage("http://www.centro27.edu.ar/");
+            pp.getPage("http://www.linkedin.com/in/maximilianou");
+            pp.getPage("http://www.linkedin.com/company/crear-buenos-aires");
             pp.getPage("http://www.ccc.uba.ar");
-            pp.getPage("http://www.clarin.com");
-            pp.getPage("http://www.lanacion.com");
+            pp.getPage("http://www.centro27.edu.ar/");
+            pp.getPage("http://www.linkedin.com/in/maximilianou");
+            pp.getPage("http://www.linkedin.com/company/crear-buenos-aires");
             pp.getPage("http://www.ccc.uba.ar");
+            pp.getPage("http://www.centro27.edu.ar/");
         } catch (Exception e) {
             e.printStackTrace();
         }

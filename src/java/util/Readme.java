@@ -1,15 +1,11 @@
 package util;
-
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
- *
  * @author maximilianou
  */
 public class Readme {
-
     String salida = "README.md";
     String[] archivos = {
         "src/java/abc/clases01/README.md",
@@ -39,14 +35,12 @@ public class Readme {
     };
     FileWriter arch = null;
     BufferedWriter barch = null;
-
     public void inicializar() throws IOException {
         File fs = new File(salida);
         fs.delete();
         arch = new FileWriter(salida, true);
         barch = new BufferedWriter(arch);
     }
-
     public void exportar() {
         for (String s : archivos) {
             String p = "";
@@ -71,9 +65,7 @@ public class Readme {
         } catch (IOException ex) {
             Logger.getLogger(Readme.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
     public void exportar(String archName, String pref) throws FileNotFoundException, IOException {
         FileReader in = new FileReader(archName);
         BufferedReader bin = new BufferedReader(in);
@@ -83,10 +75,7 @@ public class Readme {
         }
         barch.write("----- ");
         barch.newLine();
-
-
     }
-
     public static void main(String[] args) {
         System.out.println("[..]Readme");
         Readme r = new Readme();

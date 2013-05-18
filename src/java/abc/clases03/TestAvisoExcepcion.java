@@ -1,17 +1,14 @@
 package abc.clases03;
-
 import abc.clases03.Aviso;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 /**
- *
  * @author maximilianou
  */
 public class TestAvisoExcepcion {
 
     public static void main(String[] args) {
-        System.out.println("[..] " + TestAvisoExcepcion.class.getCanonicalName() + " --------");
+        System.out.println("[....]TestAvisoExcepcion --------");
 
         System.out.println(" -- ------------------------------------------ -- ");
         System.out.println(" -- Instancias u Objetos de la clase Aviso -- ");
@@ -87,6 +84,6 @@ public class TestAvisoExcepcion {
         System.out.println(" -- ---------------------------------------- -- ");
 
 
-        System.out.println("[Ok] " + TestAvisoExcepcion.class.getCanonicalName() + " --------");
+        System.out.println("[ OK ]TestAvisoExcepcion --------");
     }
 }
