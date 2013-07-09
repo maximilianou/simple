@@ -12,66 +12,28 @@ import java.util.logging.Logger;
  */
 public class TestIndice {
 
-    public static void escribir(){
-        RandomAccessFile rf = null;
-        try {
-            rf = new RandomAccessFile("base.txt", "rw");
-
-            ArrayList<String> lista = new ArrayList();
-            lista.add("01@uno@dos");
-            lista.add("03@cientouno@doscientos");
-            lista.add("05@cuarenta@ocho");
-            lista.add("08@siete@setentaytres");
-            rf.writeInt(lista.size());
-            for (String s : lista) {
-                rf.writeUTF(s);
-            }
-            
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                rf.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-        
-    }
-
-    public static void leer(){
-        RandomAccessFile rf = null;
-        try {
-            rf = new RandomAccessFile("base.txt", "rw");
-
-            ArrayList<String> lista = new ArrayList();
-            int cantidadDatos = rf.readInt();
-            
-            for(int i = 0; i<cantidadDatos; i++){
-                lista.add(rf.readUTF());
-            }
-            for(String s : lista){
-                System.out.println("["+s+"]");
-            }
-            
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                rf.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-        
-    }
-    
     public static void main(String[] args) {
-      escribir();
-      leer();
+        System.out.println("[....] TestIndice");
+        ArrayList<String> lista = new ArrayList();
+        lista.add("01@uno@dos");
+        lista.add("03@cientouno@doscientos");
+        lista.add("05@cuarenta@ocho");
+        lista.add("08@siete@setentaytres");
+
+        System.out.println("[....] TestIndice escribir -------- ");
+        ArchivoAccesoDirecto.escribir(lista, "base.txt");
+        System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
+
+        ArrayList listaRespuesta = new ArrayList();
+
+        System.out.println("[....] TestIndice escribir -------- ");
+        ArchivoAccesoDirecto.leer("base.txt", listaRespuesta);
+        System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
+        
+        for (Object s : listaRespuesta) {
+            System.out.println("[" + s + "]");
+        }
+
+        System.out.println("[ OK ] TestIndice");
     }
 }
