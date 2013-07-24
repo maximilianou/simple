@@ -1,13 +1,8 @@
 package abc.clases04;
-
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-/**
- *
- * @author maximilianou
- */
+/** @author maximilianou */
 public class TestAvisoColeccion {
 
     public static void main(String[] args) {
