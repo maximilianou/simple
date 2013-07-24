@@ -386,15 +386,10 @@
 >      }
 ----- 
 >      package abc.clases04;
->      
 >      import java.util.ArrayList;
 >      import java.util.logging.Level;
 >      import java.util.logging.Logger;
->      
->      /**
->       *
->       * @author maximilianou
->       */
+>      /** @author maximilianou */
 >      public class TestAvisoColeccion {
 >      
 >          public static void main(String[] args) {
@@ -446,6 +441,222 @@
 >      
 >      
 >              System.out.println("[Ok] " + TestAvisoColeccion.class.getCanonicalName() + " --------");
+>      
+>          }
+>      }
+----- 
+##  Diccionario, categorizacion, Indice.
+-----
+* Ejemplo java un diccionario (clave, valor).
+* Ejemplo java indice por Categoria de lista de Avisos.
+
+>      abc.clases05.Aviso.java
+>      abc.clases05.Categoria.java
+>      abc.clases05.AdministradorAvisos.java
+>      abc.clases05.TestAvisoDiccionario.java
+
+----- 
+>      package abc.clases05;
+>      
+>      /**
+>       *
+>       * @author maximilianou
+>       */
+>      public class Aviso {
+>          
+>          private String titulo;
+>          private String descripcion;
+>          private float precio;
+>      
+>          private Categoria categoria; 
+>          
+>          public Aviso(String titulo, float precio, Categoria categ) throws Exception{
+>              this.setPrecio(precio);
+>              this.setTitulo(titulo);
+>              this.setCategoria(categ);
+>          }
+>          public Aviso(String titulo, float precio, Categoria categ, String descripcion) throws Exception{
+>              this(titulo, precio, categ);
+>              this.setDescripcion(descripcion);
+>          }
+>          
+>          @Override
+>          public String toString() {
+>              return "Aviso(Titulo:"+this.titulo+"; Precio:"+this.precio+"; Descripcion:"+this.descripcion+")";
+>          }
+>          
+>          
+>          /**
+>           * @return the titulo
+>           */
+>          public String getTitulo() {
+>              return titulo;
+>          }
+>      
+>          /**
+>           * @param titulo the titulo to set
+>           */
+>          public void setTitulo(String titulo) throws Exception {
+>              if( titulo == null || titulo.length() < 1 ){
+>                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
+>              }
+>              this.titulo = titulo;
+>          }
+>      
+>          /**
+>           * @return the descripcion
+>           */
+>          public String getDescripcion() {
+>              return descripcion;
+>          }
+>      
+>          /**
+>           * @param descripcion the descripcion to set
+>           */
+>          public void setDescripcion(String descripcion) {
+>              this.descripcion = descripcion;
+>          }
+>      
+>          /**
+>           * @return the precio
+>           */
+>          public float getPrecio() {
+>              return precio;
+>          }
+>      
+>          /**
+>           * @param precio the precio to set
+>           */
+>          public void setPrecio(float precio) throws Exception {
+>              if( precio < 0 ){
+>                  throw new Exception("Un aviso debe tener un precio positivo.");
+>              }
+>              this.precio = precio;
+>          }
+>      
+>          /**
+>           * @return the categoria
+>           */
+>          public Categoria getCategoria() {
+>              return categoria;
+>          }
+>      
+>          /**
+>           * @param categoria the categoria to set
+>           */
+>          public void setCategoria(Categoria categoria) {
+>              this.categoria = categoria;
+>          }
+>      
+>      
+>      
+>          
+>      }
+----- 
+>      package abc.clases05;
+>      
+>      /**
+>       *
+>       * @author maximilianou
+>       */
+>      public class Categoria {
+>      
+>          private String nombre;
+>      
+>          public Categoria(String nom) {
+>              setNombre(nom);
+>          }
+>      
+>          /**
+>           * @return the nombre
+>           */
+>          public String getNombre() {
+>              return nombre;
+>          }
+>      
+>          /**
+>           * @param nombre the nombre to set
+>           */
+>          public void setNombre(String nombre) {
+>              this.nombre = nombre;
+>          }
+>      }
+----- 
+>      package abc.clases05;
+>      import java.util.*;
+>      /** @author maximilianou 
+>       Diccionario de Avisos por Categoria, Singleton(Unica Instancia de Admin)*/
+>      public class AdministradorAvisos {
+>          private static AdministradorAvisos INSTANCE = new AdministradorAvisos();
+>          public static AdministradorAvisos getInstance(){
+>              return INSTANCE;
+>          }
+>          private TreeMap<String, ArrayList<Aviso>> avisos = new TreeMap();
+>          public void addByCategory(Aviso aviso_param){
+>              ArrayList<Aviso> contenidoCategoria = avisos.get(aviso_param.getCategoria().getNombre());
+>              if( contenidoCategoria == null ){
+>                  contenidoCategoria = new ArrayList();
+>                  avisos.put(aviso_param.getCategoria().getNombre(), contenidoCategoria);
+>              }
+>              contenidoCategoria.add(aviso_param);
+>          }
+>          public Iterator getCategoryNames(){
+>              return avisos.keySet().iterator();
+>          }
+>          public ArrayList getAvisosByCategory(String cateName){
+>              return avisos.get(cateName);
+>          }
+>      }
+----- 
+>      package abc.clases05;
+>      import java.util.*;
+>      /** @author maximilianou */
+>      public class TestAvisoDiccionario {
+>      
+>          public static void main(String[] args) {
+>              System.out.println("[..] " + TestAvisoDiccionario.class.getCanonicalName() + " --------");
+>      
+>              System.out.println(" -- ------------------------------------------ -- ");
+>              System.out.println(" -- Diccionario de Objetos, Singleton -- ");
+>              Categoria cate1 = new Categoria("Educativo");
+>              Categoria cate2 = new Categoria("Consultoria");
+>              Categoria cate3 = new Categoria("Marketing");
+>              try {
+>                  Aviso a1 = new Aviso("Curso Java", 300, cate1, "");
+>                  Aviso a9 = new Aviso("Curso JavaScript", 250, cate1, "");
+>                  Aviso a5 = new Aviso("Curso HTML5", 240, cate1, "");
+>                  Aviso a4 = new Aviso("Proyecto Actualizacion Tecnica", 30000, cate2, "");
+>                  Aviso a7 = new Aviso("Proyecto Infraestructura", 250000, cate2, "");
+>                  Aviso a8 = new Aviso("Proyecto Integracion", 50000, cate2, "");
+>                  Aviso a2 = new Aviso("Comunidades Sociales", 30000, cate3, "");
+>                  Aviso a6 = new Aviso("Avisos Pagos", 250000, cate3, "");
+>                  Aviso a3 = new Aviso("Integracion Empresas", 50000, cate3, "");
+>      
+>                  AdministradorAvisos.getInstance().addByCategory(a7);
+>                  AdministradorAvisos.getInstance().addByCategory(a8);
+>                  AdministradorAvisos.getInstance().addByCategory(a9);
+>                  AdministradorAvisos.getInstance().addByCategory(a1);
+>                  AdministradorAvisos.getInstance().addByCategory(a2);
+>                  AdministradorAvisos.getInstance().addByCategory(a3);
+>                  AdministradorAvisos.getInstance().addByCategory(a4);
+>                  AdministradorAvisos.getInstance().addByCategory(a5);
+>                  AdministradorAvisos.getInstance().addByCategory(a6);
+>      
+>                  Iterator<String> categoriasNombres 
+>                          = AdministradorAvisos.getInstance().getCategoryNames();
+>                  while(categoriasNombres.hasNext()){
+>                    System.out.println("....Categoria...................");
+>                    System.out.println( 
+>                            AdministradorAvisos.getInstance()
+>                               .getAvisosByCategory(categoriasNombres.next()) );
+>                  }
+>                  
+>              } catch (Exception e) {
+>                  System.out.println("[ER] " + e.getMessage());
+>              }
+>              System.out.println(" -- ------------------------------------------ -- ");
+>      
+>              System.out.println("[Ok] " + TestAvisoDiccionario.class.getCanonicalName() + " --------");
 >      
 >          }
 >      }
@@ -805,6 +1016,11 @@
 >              "src/java/abc/clases04/README.md",
 >              "src/java/abc/clases04/Aviso.java",
 >              "src/java/abc/clases04/TestAvisoColeccion.java",
+>              "src/java/abc/clases05/README.md",
+>              "src/java/abc/clases05/Aviso.java",
+>              "src/java/abc/clases05/Categoria.java",
+>              "src/java/abc/clases05/AdministradorAvisos.java",
+>              "src/java/abc/clases05/TestAvisoDiccionario.java",
 >              "src/java/pattern/create/a/README.md",
 >              "src/java/pattern/create/a/Singleton.java",
 >              "src/java/pattern/create/b/README.md",
