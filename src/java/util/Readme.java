@@ -36,7 +36,8 @@ public class Readme {
         "src/java/pattern/structure/f/README.md",
         "src/java/pattern/structure/f/ProxyTest.java",
         "src/java/util/README.md",
-        "src/java/util/Readme.java"
+        "src/java/util/Readme.java",
+        "src/java/license/README.md"
     };
     FileWriter arch = null;
     BufferedWriter barch = null;

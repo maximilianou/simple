@@ -1,4 +1,4 @@
-##  Patrones, Crear, Singleton.
+##  Patrones, Crear, Singleton, Inicializacion sobre demanda.
 -----
 
 * Ejemplo java patron singleton.
