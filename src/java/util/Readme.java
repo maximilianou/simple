@@ -35,6 +35,9 @@ public class Readme {
         "src/java/pattern/create/h/AbsFactPat.java",
         "src/java/pattern/structure/f/README.md",
         "src/java/pattern/structure/f/ProxyTest.java",
+        "src/java/io/db/README.md",
+        "src/java/io/db/ArchivoAccesoDirecto.java",
+        "src/java/io/db/TestArchivoAccesoDirecto.java",
         "src/java/util/README.md",
         "src/java/util/Readme.java",
         "src/java/license/README.md"

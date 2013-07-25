@@ -966,6 +966,99 @@
 >          }
 >      }
 ----- 
+##  Archivo Acceso Directo, RandomAccessFile.
+-----
+* Ejemplo java acceso directo a posiciones de un archivo.
+
+>      io.db.ArchivoAccesoDirecto.java
+>      io.db.TestArchivoAccesoDirecto.java
+
+----- 
+>      package io.db;
+>      
+>      import java.io.FileNotFoundException;
+>      import java.io.IOException;
+>      import java.io.RandomAccessFile;
+>      import java.util.ArrayList;
+>      
+>      /** @author maximilianou  */
+>      public class ArchivoAccesoDirecto {
+>         
+>              public static void escribir(ArrayList lista, String nombreArchivo ){
+>              RandomAccessFile rf = null;
+>              try {
+>                  rf = new RandomAccessFile(nombreArchivo, "rw");
+>                  rf.writeInt(lista.size());
+>                  for (Object s : lista) {
+>                      rf.writeUTF(s.toString());
+>                  }
+>              } catch (FileNotFoundException ex) {
+>                  ex.printStackTrace();
+>              } catch (IOException ex) {
+>                  ex.printStackTrace();
+>              } finally {
+>                  try {
+>                      rf.close();
+>                  } catch (IOException ex) {
+>                      ex.printStackTrace();
+>                  }
+>              }
+>          }
+>          public static void leer( String nombreArchivo, ArrayList lista){
+>              RandomAccessFile rf = null;
+>              try {
+>                  rf = new RandomAccessFile(nombreArchivo, "rw");
+>                  int cantidadDatos = rf.readInt();
+>                  for(int i = 0; i<cantidadDatos; i++){
+>                      lista.add(rf.readUTF());
+>                  }
+>              } catch (FileNotFoundException ex) {
+>                  ex.printStackTrace();
+>              } catch (IOException ex) {
+>                  ex.printStackTrace();
+>              } finally {
+>                  try {
+>                      rf.close();
+>                  } catch (IOException ex) {
+>                      ex.printStackTrace();
+>                  }
+>              }
+>          }
+>      }
+----- 
+>      package io.db;
+>      import java.io.FileNotFoundException;
+>      import java.io.IOException;
+>      import java.io.RandomAccessFile;
+>      import java.util.ArrayList;
+>      import java.util.logging.Level;
+>      import java.util.logging.Logger;
+>      /**
+>       * @author maximilianou
+>       */
+>      public class TestArchivoAccesoDirecto {
+>      
+>          public static void main(String[] args) {
+>              System.out.println("[....] TestIndice");
+>              ArrayList<String> lista = new ArrayList();
+>              lista.add("01@uno@dos");
+>              lista.add("03@cientouno@doscientos");
+>              lista.add("05@cuarenta@ocho");
+>              lista.add("08@siete@setentaytres");
+>              System.out.println("[....] TestIndice escribir -------- ");
+>              ArchivoAccesoDirecto.escribir(lista, "base.txt");
+>              System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
+>              ArrayList listaRespuesta = new ArrayList();
+>              System.out.println("[....] TestIndice escribir -------- ");
+>              ArchivoAccesoDirecto.leer("base.txt", listaRespuesta);
+>              System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
+>              for (Object s : listaRespuesta) {
+>                  System.out.println("[" + s + "]");
+>              }
+>              System.out.println("[ OK ] TestIndice");
+>          }
+>      }
+----- 
 ##  Export, Utilitario, Herramienta.
 -----
 
@@ -1012,6 +1105,9 @@
 >              "src/java/pattern/create/h/AbsFactPat.java",
 >              "src/java/pattern/structure/f/README.md",
 >              "src/java/pattern/structure/f/ProxyTest.java",
+>              "src/java/io/db/README.md",
+>              "src/java/io/db/ArchivoAccesoDirecto.java",
+>              "src/java/io/db/TestArchivoAccesoDirecto.java",
 >              "src/java/util/README.md",
 >              "src/java/util/Readme.java",
 >              "src/java/license/README.md"
@@ -1085,5 +1181,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
------
 ----- 
