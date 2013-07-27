@@ -642,6 +642,421 @@
 >          }
 >      }
 ----- 
+##  Base de Datos, SQL.
+-----
+* Ejemplo java Base de Datos Embebida, Singleton.
+* Ejemplo java Base de Datos Instanciar el Servidor de Base de Datos.
+* Ejemplo java Base de Datos Bajar el Servidor de Base de Datos.
+* Ejemplo java Base de Datos Test Crear, Insertar, Consultar.
+
+>      abc.clases06.DB.java
+>      abc.clases06.TestDB.java
+
+* Ejemplo java Data Access Object, Singleton.
+* Ejemplo java Data Access Object, Crear, Insertar, Consultar
+
+>      abc.clases06.Aviso.java
+>      abc.clases06.AvisoDao.java
+>      abc.clases06.TestAvisoDao.java
+
+----- 
+>      package abc.clases06;
+>      
+>      import java.io.IOException;
+>      import java.io.OutputStreamWriter;
+>      import java.io.PrintWriter;
+>      import java.io.Writer;
+>      import java.sql.*;
+>      import org.hsqldb.server.Server;
+>      import org.hsqldb.persist.HsqlProperties;
+>      import org.hsqldb.server.ServerAcl;
+>      
+>      /**
+>       * @author maximilianou
+>       */
+>      public class DB {
+>      
+>          private static DB INSTANCE = null;
+>      
+>          public static DB getInstance() throws ClassNotFoundException, IOException, SQLException {
+>              if (INSTANCE == null) {
+>                  INSTANCE = new DB();
+>              }
+>              return INSTANCE;
+>          }
+>      
+>          private DB() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              try {
+>                  Class.forName("org.hsqldb.jdbc.JDBCDriver");
+>                  HsqlProperties p = new HsqlProperties();
+>                  p.setProperty("server.database.0", "file:./publicacion.hsqldb");
+>                  p.setProperty("server.dbname.0", "publicacion");
+>                  PrintWriter salidaINFO = new PrintWriter(
+>                          new OutputStreamWriter(System.out));
+>                  PrintWriter salidaERR = new PrintWriter(
+>                          new OutputStreamWriter(System.err));
+>                  Server server = new Server();
+>                  server.setProperties(p);
+>                  server.setLogWriter(salidaINFO);
+>                  server.setErrWriter(salidaERR);
+>                  server.start();
+>              } catch (ServerAcl.AclFormatException e) {
+>                  throw new SQLException("Acceso denegado:" + e.getMessage());
+>              }
+>          }
+>      
+>          public Connection getConnection() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              DB.getInstance();
+>              return DriverManager.getConnection("jdbc:hsqldb:file:./publicacion.hsqldb;", "SA", "");
+>          }
+>      
+>          public void shutdown() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              Connection c = null;
+>              PreparedStatement pstmt = null;
+>              try {
+>                  c = getConnection();
+>                  pstmt = c.prepareStatement("SHUTDOWN;");
+>                  pstmt.execute();
+>                  pstmt.close();
+>              } finally {
+>                  try {
+>                      pstmt.close();
+>                  } finally {
+>                      c.close();
+>                  }
+>              }
+>          }
+>      }
+----- 
+>      package abc.clases06;
+>      
+>      import java.io.IOException;
+>      import java.sql.*;
+>      import org.hsqldb.server.ServerAcl;
+>      
+>      /**
+>       * @author maximilianou
+>       */
+>      public class TestDB {
+>      
+>          private static final String SQL_CREATE =
+>                  "CREATE TABLE IF NOT EXISTS avisos ( av_id IDENTITY, av_titulo VARCHAR(255)  );";
+>          private static final String SQL_INSERT =
+>                  "INSERT INTO avisos (av_titulo)values(?);";
+>          private static final String SQL_SELECT =
+>                  "SELECT * FROM avisos;";
+>          private static final String SQL_DROP =
+>                  "DROP TABLE avisos;";
+>          private static final String SQL_SHUTDOWN =
+>                  "SHUTDOWN;";
+>      
+>          public static void main(String[] args) {
+>              System.out.println("[ .. ] TestDB");
+>              Connection c = null;
+>              PreparedStatement pstmt = null;
+>              try {
+>                  c = DB.getInstance().getConnection();
+>                  pstmt = c.prepareStatement(SQL_CREATE);
+>                  pstmt.execute();
+>                  pstmt.close();
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              for (int i = 0; i < 5; i++) {
+>                  try {
+>                      pstmt = c.prepareStatement(SQL_INSERT);
+>                      pstmt.setString(1, "El Titulo Del Aviso " + i);
+>                      pstmt.execute();
+>                      pstmt.close();
+>                  } catch (Exception ex) {
+>                      ex.printStackTrace();
+>                  }
+>              }
+>              try {
+>                  pstmt = c.prepareStatement(SQL_SELECT);
+>                  ResultSet rs = pstmt.executeQuery();
+>                  while (rs.next()) {
+>                      System.out.println("[" + rs.getString(1) + "], ["
+>                              + rs.getString(2) + "] ");
+>                  }
+>                  pstmt.close();
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              try {
+>                  pstmt = c.prepareStatement(SQL_DROP);
+>                  System.out.println(
+>                          pstmt.execute());
+>                  pstmt.close();
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              try {
+>                  pstmt = c.prepareStatement(SQL_SHUTDOWN);
+>                  pstmt.execute();
+>                  pstmt.close();
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              System.out.println("[ OK ] TestDB");
+>          }
+>      }
+----- 
+>      package abc.clases06;
+>      
+>      /**
+>       *
+>       * @author maximilianou
+>       */
+>      public class Aviso {
+>      
+>          private String id;
+>          private String titulo;
+>          private String descripcion;
+>          private float precio;
+>      
+>          public Aviso(String titulo, float precio, String desc) throws Exception {
+>              this.setPrecio(precio);
+>              this.setTitulo(titulo);
+>              this.setDescripcion(desc);
+>          }
+>      
+>          @Override
+>          public String toString() {
+>              return "{Aviso:{id:"+this.id+", Titulo:" + this.titulo 
+>                      + ", Precio:" + this.precio + ", Descripcion:" + this.descripcion + "}}";
+>          }
+>      
+>          public String getTitulo() {
+>              return titulo;
+>          }
+>      
+>          public void setTitulo(String titulo) throws Exception {
+>              if (titulo == null || titulo.length() < 1) {
+>                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
+>              }
+>              this.titulo = titulo;
+>          }
+>      
+>          public String getDescripcion() {
+>              return descripcion;
+>          }
+>      
+>          public void setDescripcion(String descripcion) {
+>              this.descripcion = descripcion;
+>          }
+>      
+>          public float getPrecio() {
+>              return precio;
+>          }
+>      
+>          public void setPrecio(float precio) throws Exception {
+>              if (precio < 0) {
+>                  throw new Exception("Un aviso debe tener un precio positivo.");
+>              }
+>              this.precio = precio;
+>          }
+>      
+>          public String getId() {
+>              return id;
+>          }
+>      
+>          public void setId(String id) {
+>              this.id = id;
+>          }
+>      }
+----- 
+>      package abc.clases06;
+>      
+>      import java.io.IOException;
+>      import java.sql.*;
+>      import java.util.ArrayList;
+>      
+>      /**
+>       * @author maximilianou
+>       */
+>      public class AvisoDao {
+>      
+>          private AvisoDao() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              crear();
+>          }
+>          private static AvisoDao INSTANCE = null;
+>      
+>          public static AvisoDao getInstance() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              if (INSTANCE == null) {
+>                  INSTANCE = new AvisoDao();
+>              }
+>              return INSTANCE;
+>          }
+>          private final static String SQL_AVISOS_CREATE = "CREATE TABLE IF NOT EXISTS "
+>                  + "avisos ( av_id IDENTITY, av_titulo VARCHAR(255), "
+>                  + "av_precio FLOAT, av_descripcion VARCHAR(255)  );";
+>      
+>          public void crear() throws ClassNotFoundException, IOException, SQLException {
+>              Connection c = null;
+>              PreparedStatement ptsmt = null;
+>              try {
+>                  c = DB.getInstance().getConnection();
+>                  ptsmt = c.prepareStatement(SQL_AVISOS_CREATE);
+>                  ptsmt.execute();
+>              } finally {
+>                  try {
+>                      ptsmt.close();
+>                  } finally {
+>                      c.close();
+>                  }
+>              }
+>          }
+>          private final static String SQL_AVISOS_SELECT = "SELECT * FROM avisos;";
+>      
+>          public ArrayList<Aviso> obtener() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              ArrayList<Aviso> lista = new ArrayList();
+>              Connection c = null;
+>              PreparedStatement ptsmt = null;
+>              ResultSet rs = null;
+>              try {
+>                  c = DB.getInstance().getConnection();
+>                  ptsmt = c.prepareStatement(SQL_AVISOS_SELECT);
+>                  rs = ptsmt.executeQuery();
+>                  Aviso a = null;
+>                  while (rs.next()) {
+>                      try {
+>                          a = new Aviso(rs.getString("av_titulo"),
+>                                  rs.getFloat("av_precio"),
+>                                  rs.getString("av_descripcion"));
+>                      } catch (Exception ex) {
+>                          ex.printStackTrace();
+>                      }
+>                      a.setId(rs.getString("av_id"));
+>                      lista.add(a);
+>                  }
+>              } finally {
+>                  try {
+>                      rs.close();
+>                  } finally {
+>                      try {
+>                          ptsmt.close();
+>                      } finally {
+>                          c.close();
+>                      }
+>                  }
+>              }
+>              return lista;
+>          }
+>          private final static String SQL_AVISOS_INSERT = "INSERT INTO avisos (av_titulo,"
+>                  + "av_precio, av_descripcion)values(?,?,?);";
+>      
+>          public static void insertar(Aviso a)
+>                  throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              Connection c = null;
+>              PreparedStatement ptsmt = null;
+>              try {
+>                  c = DB.getInstance().getConnection();
+>                  ptsmt = c.prepareStatement(SQL_AVISOS_INSERT);
+>                  ptsmt.setString(1, a.getTitulo());
+>                  ptsmt.setFloat(2, a.getPrecio());
+>                  ptsmt.setString(3, a.getDescripcion());
+>                  ptsmt.execute();
+>              } finally {
+>                  try {
+>                      ptsmt.close();
+>                  } finally {
+>                      c.close();
+>                  }
+>              }
+>          }
+>          private final static String SQL_AVISOS_UPDATE = "UPDATE avisos "
+>                  + "set av_titulo = ?, av_precio = ?, av_descripcion = ? "
+>                  + " WHERE av_id = ?;";
+>      
+>          public static void actualizar(Aviso a) throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              Connection c = null;
+>              PreparedStatement ptsmt = null;
+>              try {
+>                  c = DB.getInstance().getConnection();
+>                  ptsmt = c.prepareStatement(SQL_AVISOS_UPDATE);
+>                  ptsmt.setString(1, a.getTitulo());
+>                  ptsmt.setFloat(2, a.getPrecio());
+>                  ptsmt.setString(3, a.getDescripcion());
+>                  ptsmt.setInt(4, Integer.parseInt(a.getId()));
+>                  ptsmt.execute();
+>              } finally {
+>                  try {
+>                      ptsmt.close();
+>                  } finally {
+>                      c.close();
+>                  }
+>              }
+>          }
+>          private final static String SQL_AVISOS_DELETE = "DELETE avisos "
+>                  + " WHERE av_id = ?;";
+>      
+>          public static void borrar(Aviso a) throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              Connection c = null;
+>              PreparedStatement ptsmt = null;
+>              try {
+>                  c = DB.getInstance().getConnection();
+>                  ptsmt = c.prepareStatement(SQL_AVISOS_DELETE);
+>                  ptsmt.setInt(1, Integer.parseInt(a.getId()));
+>                  ptsmt.execute();
+>              } finally {
+>                  try {
+>                      ptsmt.close();
+>                  } finally {
+>                      c.close();
+>                  }
+>              }
+>          }
+>      }
+----- 
+>      package abc.clases06;
+>      
+>      import java.io.IOException;
+>      import java.sql.SQLException;
+>      import java.util.*;
+>      import java.util.logging.Level;
+>      import java.util.logging.Logger;
+>      
+>      /**
+>       *
+>       * @author maximilianou
+>       */
+>      public class TestAvisoDao {
+>      
+>          public static void main(String[] args) {
+>              System.out.println("[ .. ]TestAvisoDao");
+>              try {
+>                  ArrayList<Aviso> avisos = AvisoDao.getInstance().obtener();
+>                  for (Aviso a : avisos) {
+>                      System.out.println(a);
+>                  }
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              try {
+>                  Aviso a = new Aviso("Un Titulo TestAvisoDao", 2000, "" + new Date());
+>                  AvisoDao.insertar(a);
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              try {
+>                  DB.getInstance().shutdown();
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              System.out.println("[ OK ]TestAvisoDao");
+>          }
+>      }
+----- 
 ##  Patrones, Crear, Singleton.
 -----
 
@@ -1095,6 +1510,12 @@
 >              "src/java/abc/clases05/Categoria.java",
 >              "src/java/abc/clases05/AdministradorAvisos.java",
 >              "src/java/abc/clases05/TestAvisoDiccionario.java",
+>              "src/java/abc/clases06/README.md",
+>              "src/java/abc/clases06/DB.java",
+>              "src/java/abc/clases06/TestDB.java",
+>              "src/java/abc/clases06/Aviso.java",
+>              "src/java/abc/clases06/AvisoDao.java",
+>              "src/java/abc/clases06/TestAvisoDao.java",
 >              "src/java/pattern/create/a/README.md",
 >              "src/java/pattern/create/a/Singleton.java",
 >              "src/java/pattern/create/b/README.md",
