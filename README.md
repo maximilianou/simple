@@ -10,36 +10,6 @@
 >      abc.clases01.TestAviso.java
 ----- 
 >      package abc.clases01;
->      /**
->       * @author maximilianou
->       */
->      public class Aviso {
->          private String titulo;
->          private String descripcion;
->          private float precio;
->      
->          public String getTitulo() {
->              return titulo;
->          }
->          public void setTitulo(String titulo) {
->              this.titulo = titulo;
->          }
->          public String getDescripcion() {
->              return descripcion;
->          }
->          public void setDescripcion(String descripcion) {
->              this.descripcion = descripcion;
->          }
->          public float getPrecio() {
->              return precio;
->          }
->          public void setPrecio(float precio) {
->              this.precio = precio;
->          }
->      
->      }
------ 
->      package abc.clases01;
 >      import abc.clases01.Aviso;
 >      /**
 >       * @author maximilianou
@@ -76,36 +46,15 @@
 >          }
 >      }
 ----- 
-##  Constructores, Atributos Obligatorios.
------
-
-* Ejemplo java de Constructor con los Campos Obligatorios.
-* Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
-
->      abc.clases02.Aviso.java
->      abc.clases02.TestAvisoConstructores.java
-
------ 
->      package abc.clases02;
+>      package abc.clases01;
 >      /**
 >       * @author maximilianou
 >       */
 >      public class Aviso {
->      
 >          private String titulo;
 >          private String descripcion;
 >          private float precio;
 >      
->          public Aviso(String titulo, float precio){
->              this.setPrecio(precio);
->              this.setTitulo(titulo);
->          }
->          public Aviso(String titulo, float precio, String descripcion){
->              this.setPrecio(precio);
->              this.setTitulo(titulo);
->              this.setDescripcion(descripcion);
->          }
->          
 >          public String getTitulo() {
 >              return titulo;
 >          }
@@ -124,7 +73,18 @@
 >          public void setPrecio(float precio) {
 >              this.precio = precio;
 >          }
+>      
 >      }
+----- 
+##  Constructores, Atributos Obligatorios.
+-----
+
+* Ejemplo java de Constructor con los Campos Obligatorios.
+* Ejemplo java de Constructor con los Campos Obligatorios, mas opcionales.
+
+>      abc.clases02.Aviso.java
+>      abc.clases02.TestAvisoConstructores.java
+
 ----- 
 >      package abc.clases02;
 >      import abc.clases02.Aviso;
@@ -180,41 +140,30 @@
 >       
 >      }
 ----- 
-##  Excepcion, Validaciones.
------
-
-* Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
-* Ejemplo java Excepcion muy simple generica, luego se veran especificas.
-
->      abc.clases03.Aviso.java
->      abc.clases03.TestAvisoExcepcion.java
------ 
->      package abc.clases03;
+>      package abc.clases02;
 >      /**
 >       * @author maximilianou
 >       */
 >      public class Aviso {
+>      
 >          private String titulo;
 >          private String descripcion;
 >          private float precio;
 >      
->          public Aviso(String titulo, float precio) throws Exception{
+>          public Aviso(String titulo, float precio){
 >              this.setPrecio(precio);
 >              this.setTitulo(titulo);
 >          }
->          public Aviso(String titulo, float precio, String descripcion) throws Exception{
+>          public Aviso(String titulo, float precio, String descripcion){
 >              this.setPrecio(precio);
 >              this.setTitulo(titulo);
 >              this.setDescripcion(descripcion);
 >          }
->      
+>          
 >          public String getTitulo() {
 >              return titulo;
 >          }
->          public void setTitulo(String titulo) throws Exception {
->              if( titulo == null || titulo.length() < 1 ){
->                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
->              }
+>          public void setTitulo(String titulo) {
 >              this.titulo = titulo;
 >          }
 >          public String getDescripcion() {
@@ -226,14 +175,19 @@
 >          public float getPrecio() {
 >              return precio;
 >          }
->          public void setPrecio(float precio) throws Exception {
->              if( precio < 0 ){
->                  throw new Exception("Un aviso debe tener un precio positivo.");
->              }
+>          public void setPrecio(float precio) {
 >              this.precio = precio;
 >          }
->      
 >      }
+----- 
+##  Excepcion, Validaciones.
+-----
+
+* Ejemplo java validacion que lanza Excepcion. No permite campos invalidos.
+* Ejemplo java Excepcion muy simple generica, luego se veran especificas.
+
+>      abc.clases03.Aviso.java
+>      abc.clases03.TestAvisoExcepcion.java
 ----- 
 >      package abc.clases03;
 >      import abc.clases03.Aviso;
@@ -306,18 +260,7 @@
 >          }
 >      }
 ----- 
-##  Lista Coleccion, Cargar, recorrer y Vaciar.
------
-* Ejemplo java una coleccion, una lista particularmente.
-* Ejemplo java de como llenar una coleccion.
-* Ejemplo java de como recorrer una coleccion.
-* Ejemplo java de como vaciar una coleccion.
-
->      abc.clases04.Aviso.java
->      abc.clases04.TestAvisoColeccion.java
-
------ 
->      package abc.clases04;
+>      package abc.clases03;
 >      /**
 >       * @author maximilianou
 >       */
@@ -331,15 +274,11 @@
 >              this.setTitulo(titulo);
 >          }
 >          public Aviso(String titulo, float precio, String descripcion) throws Exception{
->              this(titulo, precio);
+>              this.setPrecio(precio);
+>              this.setTitulo(titulo);
 >              this.setDescripcion(descripcion);
 >          }
->          
->          @Override
->          public String toString() {
->              return "Aviso(Titulo:"+this.titulo+"; Precio:"+this.precio+"; Descripcion:"+this.descripcion+")";
->          }
->          
+>      
 >          public String getTitulo() {
 >              return titulo;
 >          }
@@ -364,7 +303,19 @@
 >              }
 >              this.precio = precio;
 >          }
+>      
 >      }
+----- 
+##  Lista Coleccion, Cargar, recorrer y Vaciar.
+-----
+* Ejemplo java una coleccion, una lista particularmente.
+* Ejemplo java de como llenar una coleccion.
+* Ejemplo java de como recorrer una coleccion.
+* Ejemplo java de como vaciar una coleccion.
+
+>      abc.clases04.Aviso.java
+>      abc.clases04.TestAvisoColeccion.java
+
 ----- 
 >      package abc.clases04;
 >      import java.util.ArrayList;
@@ -426,6 +377,55 @@
 >          }
 >      }
 ----- 
+>      package abc.clases04;
+>      /**
+>       * @author maximilianou
+>       */
+>      public class Aviso {
+>          private String titulo;
+>          private String descripcion;
+>          private float precio;
+>      
+>          public Aviso(String titulo, float precio) throws Exception{
+>              this.setPrecio(precio);
+>              this.setTitulo(titulo);
+>          }
+>          public Aviso(String titulo, float precio, String descripcion) throws Exception{
+>              this(titulo, precio);
+>              this.setDescripcion(descripcion);
+>          }
+>          
+>          @Override
+>          public String toString() {
+>              return "Aviso(Titulo:"+this.titulo+"; Precio:"+this.precio+"; Descripcion:"+this.descripcion+")";
+>          }
+>          
+>          public String getTitulo() {
+>              return titulo;
+>          }
+>          public void setTitulo(String titulo) throws Exception {
+>              if( titulo == null || titulo.length() < 1 ){
+>                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
+>              }
+>              this.titulo = titulo;
+>          }
+>          public String getDescripcion() {
+>              return descripcion;
+>          }
+>          public void setDescripcion(String descripcion) {
+>              this.descripcion = descripcion;
+>          }
+>          public float getPrecio() {
+>              return precio;
+>          }
+>          public void setPrecio(float precio) throws Exception {
+>              if( precio < 0 ){
+>                  throw new Exception("Un aviso debe tener un precio positivo.");
+>              }
+>              this.precio = precio;
+>          }
+>      }
+----- 
 ##  Diccionario, categorizacion, Indice.
 -----
 * Ejemplo java un diccionario (clave, valor).
@@ -436,6 +436,85 @@
 >      abc.clases05.AdministradorAvisos.java
 >      abc.clases05.TestAvisoDiccionario.java
 
+----- 
+>      package abc.clases05;
+>      import java.util.*;
+>      /** @author maximilianou */
+>      public class TestAvisoDiccionario {
+>      
+>          public static void main(String[] args) {
+>              System.out.println("[..] " + TestAvisoDiccionario.class.getCanonicalName() + " --------");
+>      
+>              System.out.println(" -- ------------------------------------------ -- ");
+>              System.out.println(" -- Diccionario de Objetos, Singleton -- ");
+>              Categoria cate1 = new Categoria("Educativo");
+>              Categoria cate2 = new Categoria("Consultoria");
+>              Categoria cate3 = new Categoria("Marketing");
+>              try {
+>                  Aviso a1 = new Aviso("Curso Java", 300, cate1, "");
+>                  Aviso a9 = new Aviso("Curso JavaScript", 250, cate1, "");
+>                  Aviso a5 = new Aviso("Curso HTML5", 240, cate1, "");
+>                  Aviso a4 = new Aviso("Proyecto Actualizacion Tecnica", 30000, cate2, "");
+>                  Aviso a7 = new Aviso("Proyecto Infraestructura", 250000, cate2, "");
+>                  Aviso a8 = new Aviso("Proyecto Integracion", 50000, cate2, "");
+>                  Aviso a2 = new Aviso("Comunidades Sociales", 30000, cate3, "");
+>                  Aviso a6 = new Aviso("Avisos Pagos", 250000, cate3, "");
+>                  Aviso a3 = new Aviso("Integracion Empresas", 50000, cate3, "");
+>      
+>                  AdministradorAvisos.getInstance().addByCategory(a7);
+>                  AdministradorAvisos.getInstance().addByCategory(a8);
+>                  AdministradorAvisos.getInstance().addByCategory(a9);
+>                  AdministradorAvisos.getInstance().addByCategory(a1);
+>                  AdministradorAvisos.getInstance().addByCategory(a2);
+>                  AdministradorAvisos.getInstance().addByCategory(a3);
+>                  AdministradorAvisos.getInstance().addByCategory(a4);
+>                  AdministradorAvisos.getInstance().addByCategory(a5);
+>                  AdministradorAvisos.getInstance().addByCategory(a6);
+>      
+>                  Iterator<String> categoriasNombres 
+>                          = AdministradorAvisos.getInstance().getCategoryNames();
+>                  while(categoriasNombres.hasNext()){
+>                    System.out.println("....Categoria...................");
+>                    System.out.println( 
+>                            AdministradorAvisos.getInstance()
+>                               .getAvisosByCategory(categoriasNombres.next()) );
+>                  }
+>                  
+>              } catch (Exception e) {
+>                  System.out.println("[ER] " + e.getMessage());
+>              }
+>              System.out.println(" -- ------------------------------------------ -- ");
+>      
+>              System.out.println("[Ok] " + TestAvisoDiccionario.class.getCanonicalName() + " --------");
+>      
+>          }
+>      }
+----- 
+>      package abc.clases05;
+>      import java.util.*;
+>      /** @author maximilianou 
+>       Diccionario de Avisos por Categoria, Singleton(Unica Instancia de Admin)*/
+>      public class AdministradorAvisos {
+>          private static AdministradorAvisos INSTANCE = new AdministradorAvisos();
+>          public static AdministradorAvisos getInstance(){
+>              return INSTANCE;
+>          }
+>          private TreeMap<String, ArrayList<Aviso>> avisos = new TreeMap();
+>          public void addByCategory(Aviso aviso_param){
+>              ArrayList<Aviso> contenidoCategoria = avisos.get(aviso_param.getCategoria().getNombre());
+>              if( contenidoCategoria == null ){
+>                  contenidoCategoria = new ArrayList();
+>                  avisos.put(aviso_param.getCategoria().getNombre(), contenidoCategoria);
+>              }
+>              contenidoCategoria.add(aviso_param);
+>          }
+>          public Iterator getCategoryNames(){
+>              return avisos.keySet().iterator();
+>          }
+>          public ArrayList getAvisosByCategory(String cateName){
+>              return avisos.get(cateName);
+>          }
+>      }
 ----- 
 >      package abc.clases05;
 >      
@@ -563,85 +642,6 @@
 >          }
 >      }
 ----- 
->      package abc.clases05;
->      import java.util.*;
->      /** @author maximilianou 
->       Diccionario de Avisos por Categoria, Singleton(Unica Instancia de Admin)*/
->      public class AdministradorAvisos {
->          private static AdministradorAvisos INSTANCE = new AdministradorAvisos();
->          public static AdministradorAvisos getInstance(){
->              return INSTANCE;
->          }
->          private TreeMap<String, ArrayList<Aviso>> avisos = new TreeMap();
->          public void addByCategory(Aviso aviso_param){
->              ArrayList<Aviso> contenidoCategoria = avisos.get(aviso_param.getCategoria().getNombre());
->              if( contenidoCategoria == null ){
->                  contenidoCategoria = new ArrayList();
->                  avisos.put(aviso_param.getCategoria().getNombre(), contenidoCategoria);
->              }
->              contenidoCategoria.add(aviso_param);
->          }
->          public Iterator getCategoryNames(){
->              return avisos.keySet().iterator();
->          }
->          public ArrayList getAvisosByCategory(String cateName){
->              return avisos.get(cateName);
->          }
->      }
------ 
->      package abc.clases05;
->      import java.util.*;
->      /** @author maximilianou */
->      public class TestAvisoDiccionario {
->      
->          public static void main(String[] args) {
->              System.out.println("[..] " + TestAvisoDiccionario.class.getCanonicalName() + " --------");
->      
->              System.out.println(" -- ------------------------------------------ -- ");
->              System.out.println(" -- Diccionario de Objetos, Singleton -- ");
->              Categoria cate1 = new Categoria("Educativo");
->              Categoria cate2 = new Categoria("Consultoria");
->              Categoria cate3 = new Categoria("Marketing");
->              try {
->                  Aviso a1 = new Aviso("Curso Java", 300, cate1, "");
->                  Aviso a9 = new Aviso("Curso JavaScript", 250, cate1, "");
->                  Aviso a5 = new Aviso("Curso HTML5", 240, cate1, "");
->                  Aviso a4 = new Aviso("Proyecto Actualizacion Tecnica", 30000, cate2, "");
->                  Aviso a7 = new Aviso("Proyecto Infraestructura", 250000, cate2, "");
->                  Aviso a8 = new Aviso("Proyecto Integracion", 50000, cate2, "");
->                  Aviso a2 = new Aviso("Comunidades Sociales", 30000, cate3, "");
->                  Aviso a6 = new Aviso("Avisos Pagos", 250000, cate3, "");
->                  Aviso a3 = new Aviso("Integracion Empresas", 50000, cate3, "");
->      
->                  AdministradorAvisos.getInstance().addByCategory(a7);
->                  AdministradorAvisos.getInstance().addByCategory(a8);
->                  AdministradorAvisos.getInstance().addByCategory(a9);
->                  AdministradorAvisos.getInstance().addByCategory(a1);
->                  AdministradorAvisos.getInstance().addByCategory(a2);
->                  AdministradorAvisos.getInstance().addByCategory(a3);
->                  AdministradorAvisos.getInstance().addByCategory(a4);
->                  AdministradorAvisos.getInstance().addByCategory(a5);
->                  AdministradorAvisos.getInstance().addByCategory(a6);
->      
->                  Iterator<String> categoriasNombres 
->                          = AdministradorAvisos.getInstance().getCategoryNames();
->                  while(categoriasNombres.hasNext()){
->                    System.out.println("....Categoria...................");
->                    System.out.println( 
->                            AdministradorAvisos.getInstance()
->                               .getAvisosByCategory(categoriasNombres.next()) );
->                  }
->                  
->              } catch (Exception e) {
->                  System.out.println("[ER] " + e.getMessage());
->              }
->              System.out.println(" -- ------------------------------------------ -- ");
->      
->              System.out.println("[Ok] " + TestAvisoDiccionario.class.getCanonicalName() + " --------");
->      
->          }
->      }
------ 
 ##  Base de Datos, SQL.
 -----
 * Ejemplo java Base de Datos Embebida, Singleton.
@@ -659,77 +659,6 @@
 >      abc.clases06.AvisoDao.java
 >      abc.clases06.TestAvisoDao.java
 
------ 
->      package abc.clases06;
->      
->      import java.io.IOException;
->      import java.io.OutputStreamWriter;
->      import java.io.PrintWriter;
->      import java.io.Writer;
->      import java.sql.*;
->      import org.hsqldb.server.Server;
->      import org.hsqldb.persist.HsqlProperties;
->      import org.hsqldb.server.ServerAcl;
->      
->      /**
->       * @author maximilianou
->       */
->      public class DB {
->      
->          private static DB INSTANCE = null;
->      
->          public static DB getInstance() throws ClassNotFoundException, IOException, SQLException {
->              if (INSTANCE == null) {
->                  INSTANCE = new DB();
->              }
->              return INSTANCE;
->          }
->      
->          private DB() throws ClassNotFoundException,
->                  IOException, SQLException {
->              try {
->                  Class.forName("org.hsqldb.jdbc.JDBCDriver");
->                  HsqlProperties p = new HsqlProperties();
->                  p.setProperty("server.database.0", "file:./publicacion.hsqldb");
->                  p.setProperty("server.dbname.0", "publicacion");
->                  PrintWriter salidaINFO = new PrintWriter(
->                          new OutputStreamWriter(System.out));
->                  PrintWriter salidaERR = new PrintWriter(
->                          new OutputStreamWriter(System.err));
->                  Server server = new Server();
->                  server.setProperties(p);
->                  server.setLogWriter(salidaINFO);
->                  server.setErrWriter(salidaERR);
->                  server.start();
->              } catch (ServerAcl.AclFormatException e) {
->                  throw new SQLException("Acceso denegado:" + e.getMessage());
->              }
->          }
->      
->          public Connection getConnection() throws ClassNotFoundException,
->                  IOException, SQLException {
->              DB.getInstance();
->              return DriverManager.getConnection("jdbc:hsqldb:file:./publicacion.hsqldb;", "SA", "");
->          }
->      
->          public void shutdown() throws ClassNotFoundException,
->                  IOException, SQLException {
->              Connection c = null;
->              PreparedStatement pstmt = null;
->              try {
->                  c = getConnection();
->                  pstmt = c.prepareStatement("SHUTDOWN;");
->                  pstmt.execute();
->                  pstmt.close();
->              } finally {
->                  try {
->                      pstmt.close();
->                  } finally {
->                      c.close();
->                  }
->              }
->          }
->      }
 ----- 
 >      package abc.clases06;
 >      
@@ -807,65 +736,111 @@
 ----- 
 >      package abc.clases06;
 >      
+>      import java.io.IOException;
+>      import java.io.OutputStreamWriter;
+>      import java.io.PrintWriter;
+>      import java.io.Writer;
+>      import java.sql.*;
+>      import org.hsqldb.server.Server;
+>      import org.hsqldb.persist.HsqlProperties;
+>      import org.hsqldb.server.ServerAcl;
+>      
+>      /**
+>       * @author maximilianou
+>       */
+>      public class DB {
+>      
+>          private static DB INSTANCE = null;
+>      
+>          public static DB getInstance() throws ClassNotFoundException, IOException, SQLException {
+>              if (INSTANCE == null) {
+>                  INSTANCE = new DB();
+>              }
+>              return INSTANCE;
+>          }
+>      
+>          private DB() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              try {
+>                  Class.forName("org.hsqldb.jdbc.JDBCDriver");
+>                  HsqlProperties p = new HsqlProperties();
+>                  p.setProperty("server.database.0", "file:./publicacion.hsqldb");
+>                  p.setProperty("server.dbname.0", "publicacion");
+>                  PrintWriter salidaINFO = new PrintWriter(
+>                          new OutputStreamWriter(System.out));
+>                  PrintWriter salidaERR = new PrintWriter(
+>                          new OutputStreamWriter(System.err));
+>                  Server server = new Server();
+>                  server.setProperties(p);
+>                  server.setLogWriter(salidaINFO);
+>                  server.setErrWriter(salidaERR);
+>                  server.start();
+>              } catch (ServerAcl.AclFormatException e) {
+>                  throw new SQLException("Acceso denegado:" + e.getMessage());
+>              }
+>          }
+>      
+>          public Connection getConnection() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              DB.getInstance();
+>              return DriverManager.getConnection("jdbc:hsqldb:file:./publicacion.hsqldb;", "SA", "");
+>          }
+>      
+>          public void shutdown() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              Connection c = null;
+>              PreparedStatement pstmt = null;
+>              try {
+>                  c = getConnection();
+>                  pstmt = c.prepareStatement("SHUTDOWN;");
+>                  pstmt.execute();
+>                  pstmt.close();
+>              } finally {
+>                  try {
+>                      pstmt.close();
+>                  } finally {
+>                      c.close();
+>                  }
+>              }
+>          }
+>      }
+----- 
+>      package abc.clases06;
+>      
+>      import java.io.IOException;
+>      import java.sql.SQLException;
+>      import java.util.*;
+>      import java.util.logging.Level;
+>      import java.util.logging.Logger;
+>      
 >      /**
 >       *
 >       * @author maximilianou
 >       */
->      public class Aviso {
+>      public class TestAvisoDao {
 >      
->          private String id;
->          private String titulo;
->          private String descripcion;
->          private float precio;
->      
->          public Aviso(String titulo, float precio, String desc) throws Exception {
->              this.setPrecio(precio);
->              this.setTitulo(titulo);
->              this.setDescripcion(desc);
->          }
->      
->          @Override
->          public String toString() {
->              return "{Aviso:{id:"+this.id+", Titulo:" + this.titulo 
->                      + ", Precio:" + this.precio + ", Descripcion:" + this.descripcion + "}}";
->          }
->      
->          public String getTitulo() {
->              return titulo;
->          }
->      
->          public void setTitulo(String titulo) throws Exception {
->              if (titulo == null || titulo.length() < 1) {
->                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
+>          public static void main(String[] args) {
+>              System.out.println("[ .. ]TestAvisoDao");
+>              try {
+>                  ArrayList<Aviso> avisos = AvisoDao.getInstance().obtener();
+>                  for (Aviso a : avisos) {
+>                      System.out.println(a);
+>                  }
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
 >              }
->              this.titulo = titulo;
->          }
->      
->          public String getDescripcion() {
->              return descripcion;
->          }
->      
->          public void setDescripcion(String descripcion) {
->              this.descripcion = descripcion;
->          }
->      
->          public float getPrecio() {
->              return precio;
->          }
->      
->          public void setPrecio(float precio) throws Exception {
->              if (precio < 0) {
->                  throw new Exception("Un aviso debe tener un precio positivo.");
+>              try {
+>                  Aviso a = new Aviso("Un Titulo TestAvisoDao", 2000, "" + new Date());
+>                  AvisoDao.insertar(a);
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
 >              }
->              this.precio = precio;
->          }
->      
->          public String getId() {
->              return id;
->          }
->      
->          public void setId(String id) {
->              this.id = id;
+>              try {
+>                  DB.getInstance().shutdown();
+>              } catch (Exception ex) {
+>                  ex.printStackTrace();
+>              }
+>              System.out.println("[ OK ]TestAvisoDao");
 >          }
 >      }
 ----- 
@@ -1020,40 +995,65 @@
 ----- 
 >      package abc.clases06;
 >      
->      import java.io.IOException;
->      import java.sql.SQLException;
->      import java.util.*;
->      import java.util.logging.Level;
->      import java.util.logging.Logger;
->      
 >      /**
 >       *
 >       * @author maximilianou
 >       */
->      public class TestAvisoDao {
+>      public class Aviso {
 >      
->          public static void main(String[] args) {
->              System.out.println("[ .. ]TestAvisoDao");
->              try {
->                  ArrayList<Aviso> avisos = AvisoDao.getInstance().obtener();
->                  for (Aviso a : avisos) {
->                      System.out.println(a);
->                  }
->              } catch (Exception ex) {
->                  ex.printStackTrace();
+>          private String id;
+>          private String titulo;
+>          private String descripcion;
+>          private float precio;
+>      
+>          public Aviso(String titulo, float precio, String desc) throws Exception {
+>              this.setPrecio(precio);
+>              this.setTitulo(titulo);
+>              this.setDescripcion(desc);
+>          }
+>      
+>          @Override
+>          public String toString() {
+>              return "{Aviso:{id:"+this.id+", Titulo:" + this.titulo 
+>                      + ", Precio:" + this.precio + ", Descripcion:" + this.descripcion + "}}";
+>          }
+>      
+>          public String getTitulo() {
+>              return titulo;
+>          }
+>      
+>          public void setTitulo(String titulo) throws Exception {
+>              if (titulo == null || titulo.length() < 1) {
+>                  throw new Exception("Un Aviso debe tener un Titulo al menos un caracter.");
 >              }
->              try {
->                  Aviso a = new Aviso("Un Titulo TestAvisoDao", 2000, "" + new Date());
->                  AvisoDao.insertar(a);
->              } catch (Exception ex) {
->                  ex.printStackTrace();
+>              this.titulo = titulo;
+>          }
+>      
+>          public String getDescripcion() {
+>              return descripcion;
+>          }
+>      
+>          public void setDescripcion(String descripcion) {
+>              this.descripcion = descripcion;
+>          }
+>      
+>          public float getPrecio() {
+>              return precio;
+>          }
+>      
+>          public void setPrecio(float precio) throws Exception {
+>              if (precio < 0) {
+>                  throw new Exception("Un aviso debe tener un precio positivo.");
 >              }
->              try {
->                  DB.getInstance().shutdown();
->              } catch (Exception ex) {
->                  ex.printStackTrace();
->              }
->              System.out.println("[ OK ]TestAvisoDao");
+>              this.precio = precio;
+>          }
+>      
+>          public String getId() {
+>              return id;
+>          }
+>      
+>          public void setId(String id) {
+>              this.id = id;
 >          }
 >      }
 ----- 
@@ -1390,6 +1390,39 @@
 
 ----- 
 >      package io.db;
+>      import java.io.FileNotFoundException;
+>      import java.io.IOException;
+>      import java.io.RandomAccessFile;
+>      import java.util.ArrayList;
+>      import java.util.logging.Level;
+>      import java.util.logging.Logger;
+>      /**
+>       * @author maximilianou
+>       */
+>      public class TestArchivoAccesoDirecto {
+>      
+>          public static void main(String[] args) {
+>              System.out.println("[....] TestIndice");
+>              ArrayList<String> lista = new ArrayList();
+>              lista.add("01@uno@dos");
+>              lista.add("03@cientouno@doscientos");
+>              lista.add("05@cuarenta@ocho");
+>              lista.add("08@siete@setentaytres");
+>              System.out.println("[....] TestIndice escribir -------- ");
+>              ArchivoAccesoDirecto.escribir(lista, "base.txt");
+>              System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
+>              ArrayList listaRespuesta = new ArrayList();
+>              System.out.println("[....] TestIndice escribir -------- ");
+>              ArchivoAccesoDirecto.leer("base.txt", listaRespuesta);
+>              System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
+>              for (Object s : listaRespuesta) {
+>                  System.out.println("[" + s + "]");
+>              }
+>              System.out.println("[ OK ] TestIndice");
+>          }
+>      }
+----- 
+>      package io.db;
 >      
 >      import java.io.FileNotFoundException;
 >      import java.io.IOException;
@@ -1441,39 +1474,6 @@
 >          }
 >      }
 ----- 
->      package io.db;
->      import java.io.FileNotFoundException;
->      import java.io.IOException;
->      import java.io.RandomAccessFile;
->      import java.util.ArrayList;
->      import java.util.logging.Level;
->      import java.util.logging.Logger;
->      /**
->       * @author maximilianou
->       */
->      public class TestArchivoAccesoDirecto {
->      
->          public static void main(String[] args) {
->              System.out.println("[....] TestIndice");
->              ArrayList<String> lista = new ArrayList();
->              lista.add("01@uno@dos");
->              lista.add("03@cientouno@doscientos");
->              lista.add("05@cuarenta@ocho");
->              lista.add("08@siete@setentaytres");
->              System.out.println("[....] TestIndice escribir -------- ");
->              ArchivoAccesoDirecto.escribir(lista, "base.txt");
->              System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
->              ArrayList listaRespuesta = new ArrayList();
->              System.out.println("[....] TestIndice escribir -------- ");
->              ArchivoAccesoDirecto.leer("base.txt", listaRespuesta);
->              System.out.println("[ OK ] TestIndice escribir ~~~~~~~~ ");
->              for (Object s : listaRespuesta) {
->                  System.out.println("[" + s + "]");
->              }
->              System.out.println("[ OK ] TestIndice");
->          }
->      }
------ 
 ##  Export, Utilitario, Herramienta.
 -----
 
@@ -1494,28 +1494,28 @@
 >          String salida = "README.md";
 >          String[] archivos = {
 >              "src/java/abc/clases01/README.md",
->              "src/java/abc/clases01/Aviso.java",
 >              "src/java/abc/clases01/TestAviso.java",
+>              "src/java/abc/clases01/Aviso.java",
 >              "src/java/abc/clases02/README.md",
->              "src/java/abc/clases02/Aviso.java",
 >              "src/java/abc/clases02/TestAvisoConstructores.java",
+>              "src/java/abc/clases02/Aviso.java",
 >              "src/java/abc/clases03/README.md",
->              "src/java/abc/clases03/Aviso.java",
 >              "src/java/abc/clases03/TestAvisoExcepcion.java",
+>              "src/java/abc/clases03/Aviso.java",
 >              "src/java/abc/clases04/README.md",
->              "src/java/abc/clases04/Aviso.java",
 >              "src/java/abc/clases04/TestAvisoColeccion.java",
+>              "src/java/abc/clases04/Aviso.java",
 >              "src/java/abc/clases05/README.md",
+>              "src/java/abc/clases05/TestAvisoDiccionario.java",
+>              "src/java/abc/clases05/AdministradorAvisos.java",
 >              "src/java/abc/clases05/Aviso.java",
 >              "src/java/abc/clases05/Categoria.java",
->              "src/java/abc/clases05/AdministradorAvisos.java",
->              "src/java/abc/clases05/TestAvisoDiccionario.java",
 >              "src/java/abc/clases06/README.md",
->              "src/java/abc/clases06/DB.java",
 >              "src/java/abc/clases06/TestDB.java",
->              "src/java/abc/clases06/Aviso.java",
->              "src/java/abc/clases06/AvisoDao.java",
+>              "src/java/abc/clases06/DB.java",
 >              "src/java/abc/clases06/TestAvisoDao.java",
+>              "src/java/abc/clases06/AvisoDao.java",
+>              "src/java/abc/clases06/Aviso.java",
 >              "src/java/pattern/create/a/README.md",
 >              "src/java/pattern/create/a/Singleton.java",
 >              "src/java/pattern/create/b/README.md",
@@ -1527,8 +1527,8 @@
 >              "src/java/pattern/structure/f/README.md",
 >              "src/java/pattern/structure/f/ProxyTest.java",
 >              "src/java/io/db/README.md",
->              "src/java/io/db/ArchivoAccesoDirecto.java",
 >              "src/java/io/db/TestArchivoAccesoDirecto.java",
+>              "src/java/io/db/ArchivoAccesoDirecto.java",
 >              "src/java/util/README.md",
 >              "src/java/util/Readme.java",
 >              "src/java/license/README.md"
