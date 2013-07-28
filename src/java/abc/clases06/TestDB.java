@@ -10,7 +10,8 @@ import org.hsqldb.server.ServerAcl;
 public class TestDB {
 
     private static final String SQL_CREATE =
-            "CREATE TABLE IF NOT EXISTS avisos ( av_id IDENTITY, av_titulo VARCHAR(255)  );";
+            "CREATE TABLE IF NOT EXISTS avisos ( av_id IDENTITY, "
+            + "av_titulo VARCHAR(255)  );";
     private static final String SQL_INSERT =
             "INSERT INTO avisos (av_titulo)values(?);";
     private static final String SQL_SELECT =
