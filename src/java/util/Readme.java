@@ -44,6 +44,8 @@ public class Readme {
         "src/java/io/db/README.md",
         "src/java/io/db/TestArchivoAccesoDirecto.java",
         "src/java/io/db/ArchivoAccesoDirecto.java",
+        "src/java/graficos/README.md",
+        "src/java/graficos/TestGraphics.java",
         "src/java/util/README.md",
         "src/java/util/Readme.java",
         "src/java/license/README.md"
