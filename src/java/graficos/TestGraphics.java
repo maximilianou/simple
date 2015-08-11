@@ -34,7 +34,7 @@ public class TestGraphics {
         marco.pack();
         marco.setVisible(true);
 
-        String sitio = "http://www.maximilianou.com.ar";
+        String sitio = "http://www.maximilianou.com";
         DefaultCategoryDataset cddata = new DefaultCategoryDataset();
         cddata.setValue(8, sitio, "Julio");
         cddata.setValue(14, sitio, "Agosto");
